@@ -1,0 +1,144 @@
+  [1m[35m (20.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE DATABASE `baseball_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE DATABASE `baseball_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20180303091807)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20180303091807)
+  [1m[35m (31.1ms)[0m  [1m[35mCREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `favorite_team_id` int, `email` varchar(255) NOT NULL, `hashed_password` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime,  INDEX `index_users_on_favorite_team_id`  (`favorite_team_id`), CONSTRAINT `fk_rails_e9baef8956`
+FOREIGN KEY (`favorite_team_id`)
+  REFERENCES `team` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateTeams (20180303092850)
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE TABLE `teams` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `name_en` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (7.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180303092850')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20180303092907)
+  [1m[35m (34.2ms)[0m  [1m[35mCREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `favorite_team_id` int, `email` varchar(255) NOT NULL, `hashed_password` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime,  INDEX `index_users_on_favorite_team_id`  (`favorite_team_id`), CONSTRAINT `fk_rails_e9baef8956`
+FOREIGN KEY (`favorite_team_id`)
+  REFERENCES `team` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20180303092907)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20180303092907)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20180303092907)
+  [1m[35m (44.9ms)[0m  [1m[35mCREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `team_id` int, `email` varchar(255) NOT NULL, `hashed_password` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180303092907')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOpeningStartingLineups (20180303093316)
+  [1m[35m (61.4ms)[0m  [1m[35mCREATE TABLE `opening_starting_lineups` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int, `team_id` int NOT NULL, `year` int NOT NULL, `one_id` int NOT NULL, `two_id` int NOT NULL, `three_id` int NOT NULL, `four_id` int NOT NULL, `five_id` int NOT NULL, `six_id` int NOT NULL, `seven_id` int NOT NULL, `eight_id` int NOT NULL, `nine_id` int NOT NULL, `comment` varchar(255), `created_at` datetime, `updated_at` datetime,  INDEX `index_opening_starting_lineups_on_user_id`  (`user_id`),  INDEX `index_opening_starting_lineups_on_team_id`  (`team_id`),  INDEX `index_opening_starting_lineups_on_one_id`  (`one_id`),  INDEX `index_opening_starting_lineups_on_two_id`  (`two_id`),  INDEX `index_opening_starting_lineups_on_three_id`  (`three_id`),  INDEX `index_opening_starting_lineups_on_four_id`  (`four_id`),  INDEX `index_opening_starting_lineups_on_five_id`  (`five_id`),  INDEX `index_opening_starting_lineups_on_six_id`  (`six_id`),  INDEX `index_opening_starting_lineups_on_seven_id`  (`seven_id`),  INDEX `index_opening_starting_lineups_on_eight_id`  (`eight_id`),  INDEX `index_opening_starting_lineups_on_nine_id`  (`nine_id`), CONSTRAINT `fk_rails_6d3225b719`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_50fdd07afd`
+FOREIGN KEY (`team_id`)
+  REFERENCES `teams` (`id`)
+, CONSTRAINT `fk_rails_ba5012beee`
+FOREIGN KEY (`one_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_20a9456042`
+FOREIGN KEY (`two_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_b5f6c360c9`
+FOREIGN KEY (`three_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_94514f731c`
+FOREIGN KEY (`four_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_54a0093ff8`
+FOREIGN KEY (`five_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_9c5de97182`
+FOREIGN KEY (`six_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_3f11e96816`
+FOREIGN KEY (`seven_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_37b402915e`
+FOREIGN KEY (`eight_id`)
+  REFERENCES `player` (`id`)
+, CONSTRAINT `fk_rails_071791beb8`
+FOREIGN KEY (`nine_id`)
+  REFERENCES `player` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateOpeningStartingLineups (20180303093316)
+  [1m[35m (41.1ms)[0m  [1m[35mCREATE TABLE `opening_starting_lineups` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user` int, `team` int NOT NULL, `year` int NOT NULL, `one` int NOT NULL, `two` int NOT NULL, `three` int NOT NULL, `four` int NOT NULL, `five` int NOT NULL, `six` int NOT NULL, `seven` int NOT NULL, `eight` int NOT NULL, `nine` int NOT NULL, `comment` varchar(255), `created_at` datetime, `updated_at` datetime,  INDEX `index_opening_starting_lineups_on_user`  (`user`),  INDEX `index_opening_starting_lineups_on_team`  (`team`),  INDEX `index_opening_starting_lineups_on_one`  (`one`),  INDEX `index_opening_starting_lineups_on_two`  (`two`),  INDEX `index_opening_starting_lineups_on_three`  (`three`),  INDEX `index_opening_starting_lineups_on_four`  (`four`),  INDEX `index_opening_starting_lineups_on_five`  (`five`),  INDEX `index_opening_starting_lineups_on_six`  (`six`),  INDEX `index_opening_starting_lineups_on_seven`  (`seven`),  INDEX `index_opening_starting_lineups_on_eight`  (`eight`),  INDEX `index_opening_starting_lineups_on_nine`  (`nine`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180303093316')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnLeagueTeams (20180306145621)
+  [1m[35m (50.2ms)[0m  [1m[35mALTER TABLE `teams` ADD `league_id` int[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180306145621')[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLeague (20180306145959)
+  [1m[35m (24.5ms)[0m  [1m[35mCREATE TABLE `leagues` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `name_en` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180306145959')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOpeningStartingLineupComment (20180310023501)
+  [1m[35m (30.3ms)[0m  [1m[35mCREATE TABLE `opening_starting_lineup_comments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `opening_starting_lineup` int NOT NULL, `user` int, `comment` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime,  INDEX `index_opening_starting_lineup_id`  (`opening_starting_lineup`),  INDEX `index_opening_starting_user_id`  (`user`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180310023501')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlayers (20180320170241)
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE `players` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `team_id` int NOT NULL, `created_at` datetime, `updated_at` datetime,  INDEX `index_players_on_team_id`  (`team_id`), CONSTRAINT `fk_rails_8880a915a5`
+FOREIGN KEY (`team_id`)
+  REFERENCES `teams` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180320170241')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlayerRecord2017s (20180320173626)
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE `player_record2017s` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `player_id` int, `average` decimal(4,3) DEFAULT 0.0 NOT NULL, `rbi` int DEFAULT NULL NOT NULL, `homerun` int DEFAULT NULL NOT NULL, `match` int DEFAULT NULL NOT NULL, `win` int DEFAULT NULL NOT NULL, `defeat` int DEFAULT NULL NOT NULL, `hold` int DEFAULT NULL NOT NULL, `save` int DEFAULT NULL NOT NULL, `created_at` datetime, `updated_at` datetime,  INDEX `index_player_record2017s_on_player_id`  (`player_id`), CONSTRAINT `fk_rails_1552ec0429`
+FOREIGN KEY (`player_id`)
+  REFERENCES `players` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreatePlayerRecord2017s (20180320173626)
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE `player_record2017s` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `player_id` int, `average` decimal(4,3) DEFAULT 0.0 NOT NULL, `rbi` int DEFAULT NULL NOT NULL, `homerun` int DEFAULT NULL NOT NULL, `match` int DEFAULT NULL NOT NULL, `win` int DEFAULT NULL NOT NULL, `defeat` int DEFAULT NULL NOT NULL, `hold` int DEFAULT NULL NOT NULL, `save` int DEFAULT NULL NOT NULL, `created_at` datetime, `updated_at` datetime,  INDEX `index_player_record2017s_on_player_id`  (`player_id`), CONSTRAINT `fk_rails_1552ec0429`
+FOREIGN KEY (`player_id`)
+  REFERENCES `players` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('3313782083190140625', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreatePlayerRecord2017s (20180320173626)
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE `player_record2017s` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `player_id` int, `average` decimal(4,3) DEFAULT 0.0 NOT NULL, `rbi` int DEFAULT NULL NOT NULL, `homerun` int DEFAULT NULL NOT NULL, `match` int DEFAULT NULL NOT NULL, `win` int DEFAULT NULL NOT NULL, `defeat` int DEFAULT NULL NOT NULL, `hold` int DEFAULT NULL NOT NULL, `save` int DEFAULT NULL NOT NULL, `created_at` datetime, `updated_at` datetime,  INDEX `index_player_record2017s_on_player_id`  (`player_id`), CONSTRAINT `fk_rails_1552ec0429`
+FOREIGN KEY (`player_id`)
+  REFERENCES `players` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('3313782083190140625')[0m
