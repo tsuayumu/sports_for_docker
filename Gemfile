@@ -54,7 +54,7 @@ group :test do
 end
 
 # スキーマ管理用のコマンドラインツール
-# gem 'ridgepole'
+gem 'ridgepole'
 
 gem 'slim-rails'
 
