@@ -189,134 +189,134 @@ $color-04: #f2f2f2; //ほぼ白
 
 //backgroundアニメーション
 @keyframes home {
- 0% {background-image: image-url("home/01_01.jpg");}
- 50% {background-image: image-url("home/01_02.jpg");}
- 100% {background-image: image-url("home/01_01.jpg");}
+ 0% {background-image: url(/assets/home/01_01.png);}
+ 50% {background-image: url(/assets/home/01_01.png);}
+ 100% {background-image: url(/assets/home/01_01.png);}
 }
 @keyframes home_ss {
- 0% {background-image: image-url("home/01_01_ss.jpg");}
- 50% {background-image: image-url("home/01_02_ss.jpg");}
- 100% {background-image: image-url("home/01_01_ss.jpg");}
+ 0% {background-image: url(/assets/home/01_01_ss.jpg);}
+ 50% {background-image: url(/assets/home/01_02_ss.jpg);}
+ 100% {background-image: url(/assets/home/01_01_ss.jpg);}
 }
 @keyframes Swallows {
- 0% {background-image: image-url("Swallows/01.jpg");}
- 50% {background-image: image-url("Swallows/02.jpg");;}
- 100% {background-image: image-url("Swallows/01.jpg");}
+ 0% {background-image: url(/assets/Swallows/01.jpg);}
+ 50% {background-image: url(/assets/Swallows/02.jpg);;}
+ 100% {background-image: url(/assets/Swallows/01.jpg);}
 }
 @keyframes Swallows_ss {
- 0% {background-image: image-url("Swallows/01_ss.jpg");}
- 50% {background-image: image-url("Swallows/02_ss.jpg");;}
- 100% {background-image: image-url("Swallows/01_ss.jpg");}
+ 0% {background-image: url(/assets/Swallows/01_ss.jpg);}
+ 50% {background-image: url(/assets/Swallows/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Swallows/01_ss.jpg);}
 }
 @keyframes Giants {
- 0% {background-image: image-url("Giants/01.jpg");}
- 50% {background-image: image-url("Giants/02.jpg");;}
- 100% {background-image: image-url("Giants/01.jpg");}
+ 0% {background-image: url(/assets/Giants/01.jpg);}
+ 50% {background-image: url(/assets/Giants/02.jpg);;}
+ 100% {background-image: url(/assets/Giants/01.jpg);}
 }
 @keyframes Giants_ss {
- 0% {background-image: image-url("Giants/01_ss.jpg");}
- 50% {background-image: image-url("Giants/02_ss.jpg");;}
- 100% {background-image: image-url("Giants/01_ss.jpg");}
+ 0% {background-image: url(/assets/Giants/01_ss.jpg);}
+ 50% {background-image: url(/assets/Giants/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Giants/01_ss.jpg);}
 }
 @keyframes Tigers {
- 0% {background-image: image-url("Tigers/01.jpg");}
- 50% {background-image: image-url("Tigers/02.jpg");;}
- 100% {background-image: image-url("Tigers/01.jpg");}
+ 0% {background-image: url(/assets/Tigers/01.jpg);}
+ 50% {background-image: url(/assets/Tigers/02.jpg);;}
+ 100% {background-image: url(/assets/Tigers/01.jpg);}
 }
 @keyframes Tigers_ss {
- 0% {background-image: image-url("Tigers/01_ss.jpg");}
- 50% {background-image: image-url("Tigers/02_ss.jpg");;}
- 100% {background-image: image-url("Tigers/01_ss.jpg");}
+ 0% {background-image: url(/assets/Tigers/01_ss.jpg);}
+ 50% {background-image: url(/assets/Tigers/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Tigers/01_ss.jpg);}
 }
 @keyframes Carp {
- 0% {background-image: image-url("Carp/01.jpg");}
- 50% {background-image: image-url("Carp/02.jpg");;}
- 100% {background-image: image-url("Carp/01.jpg");}
+ 0% {background-image: url(/assets/Carp/01.jpg);}
+ 50% {background-image: url(/assets/Carp/02.jpg);;}
+ 100% {background-image: url(/assets/Carp/01.jpg);}
 }
 @keyframes Carp_ss {
- 0% {background-image: image-url("Carp/01_ss.jpg");}
- 50% {background-image: image-url("Carp/02_ss.jpg");;}
- 100% {background-image: image-url("Carp/01_ss.jpg");}
+ 0% {background-image: url(/assets/Carp/01_ss.jpg);}
+ 50% {background-image: url(/assets/Carp/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Carp/01_ss.jpg);}
 }
 @keyframes Dragons {
- 0% {background-image: image-url("Dragons/01.jpg");}
- 50% {background-image: image-url("Dragons/02.jpg");;}
- 100% {background-image: image-url("Dragons/01.jpg");}
+ 0% {background-image: url(/assets/Dragons/01.jpg);}
+ 50% {background-image: url(/assets/Dragons/02.jpg);;}
+ 100% {background-image: url(/assets/Dragons/01.jpg);}
 }
 @keyframes Dragons_ss {
- 0% {background-image: image-url("Dragons/01_ss.jpg");}
- 50% {background-image: image-url("Dragons/02_ss.jpg");;}
- 100% {background-image: image-url("Dragons/01_ss.jpg");}
+ 0% {background-image: url(/assets/Dragons/01_ss.jpg);}
+ 50% {background-image: url(/assets/Dragons/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Dragons/01_ss.jpg);}
 }
 @keyframes Baystars {
- 0% {background-image: image-url("Baystars/01.jpg");}
- 50% {background-image: image-url("Baystars/02.jpg");;}
- 100% {background-image: image-url("Baystars/01.jpg");}
+ 0% {background-image: url(/assets/Baystars/01.jpg);}
+ 50% {background-image: url(/assets/Baystars/02.jpg);;}
+ 100% {background-image: url(/assets/Baystars/01.jpg);}
 }
 @keyframes Baystars_ss {
- 0% {background-image: image-url("Baystars/01_ss.jpg");}
- 50% {background-image: image-url("Baystars/02_ss.jpg");;}
- 100% {background-image: image-url("Baystars/01_ss.jpg");}
+ 0% {background-image: url(/assets/Baystars/01_ss.jpg);}
+ 50% {background-image: url(/assets/Baystars/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Baystars/01_ss.jpg);}
 }
 @keyframes Hawks {
- 0% {background-image: image-url("Hawks/01.jpg");}
- 50% {background-image: image-url("Hawks/02.jpg");;}
- 100% {background-image: image-url("Hawks/01.jpg");}
+ 0% {background-image: url(/assets/Hawks/01.jpg);}
+ 50% {background-image: url(/assets/Hawks/02.jpg);;}
+ 100% {background-image: url(/assets/Hawks/01.jpg);}
 }
 @keyframes Hawks_ss {
- 0% {background-image: image-url("Hawks/01_ss.jpg");}
- 50% {background-image: image-url("Hawks/02_ss.jpg");;}
- 100% {background-image: image-url("Hawks/01_ss.jpg");}
+ 0% {background-image: url(/assets/Hawks/01_ss.jpg);}
+ 50% {background-image: url(/assets/Hawks/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Hawks/01_ss.jpg);}
 }
 @keyframes Fighters {
- 0% {background-image: image-url("Fighters/01.jpg");}
- 50% {background-image: image-url("Fighters/02.jpg");;}
- 100% {background-image: image-url("Fighters/01.jpg");}
+ 0% {background-image: url(/assets/Fighters/01.jpg);}
+ 50% {background-image: url(/assets/Fighters/02.jpg);;}
+ 100% {background-image: url(/assets/Fighters/01.jpg);}
 }
 @keyframes Fighters_ss {
- 0% {background-image: image-url("Fighters/01_ss.jpg");}
- 50% {background-image: image-url("Fighters/02_ss.jpg");;}
- 100% {background-image: image-url("Fighters/01_ss.jpg");}
+ 0% {background-image: url(/assets/Fighters/01_ss.jpg);}
+ 50% {background-image: url(/assets/Fighters/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Fighters/01_ss.jpg);}
 }
 @keyframes Marines {
- 0% {background-image: image-url("Marines/01.jpg");}
- 50% {background-image: image-url("Marines/02.jpg");;}
- 100% {background-image: image-url("Marines/01.jpg");}
+ 0% {background-image: url(/assets/Marines/01.jpg);}
+ 50% {background-image: url(/assets/Marines/02.jpg);;}
+ 100% {background-image: url(/assets/Marines/01.jpg);}
 }
 @keyframes Marines_ss {
- 0% {background-image: image-url("Marines/01_ss.jpg");}
- 50% {background-image: image-url("Marines/02_ss.jpg");;}
- 100% {background-image: image-url("Marines/01_ss.jpg");}
+ 0% {background-image: url(/assets/Marines/01_ss.jpg);}
+ 50% {background-image: url(/assets/Marines/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Marines/01_ss.jpg);}
 }
 @keyframes Lions {
- 0% {background-image: image-url("Lions/01.jpg");}
- 50% {background-image: image-url("Lions/02.jpg");;}
- 100% {background-image: image-url("Lions/01.jpg");}
+ 0% {background-image: url(/assets/Lions/01.jpg);}
+ 50% {background-image: url(/assets/Lions/02.jpg);;}
+ 100% {background-image: url(/assets/Lions/01.jpg);}
 }
 @keyframes Lions_ss {
- 0% {background-image: image-url("Lions/01_ss.jpg");}
- 50% {background-image: image-url("Lions/02_ss.jpg");;}
- 100% {background-image: image-url("Lions/01_ss.jpg");}
+ 0% {background-image: url(/assets/Lions/01_ss.jpg);}
+ 50% {background-image: url(/assets/Lions/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Lions/01_ss.jpg);}
 }
 @keyframes Buffaloes {
- 0% {background-image: image-url("Buffaloes/01.jpg");}
- 50% {background-image: image-url("Buffaloes/02.jpg");;}
- 100% {background-image: image-url("Buffaloes/01.jpg");}
+ 0% {background-image: url(/assets/Buffaloes/01.jpg);}
+ 50% {background-image: url(/assets/Buffaloes/02.jpg);;}
+ 100% {background-image: url(/assets/Buffaloes/01.jpg);}
 }
 @keyframes Buffaloes_ss {
- 0% {background-image: image-url("Buffaloes/01_ss.jpg");}
- 50% {background-image: image-url("Buffaloes/02_ss.jpg");;}
- 100% {background-image: image-url("Buffaloes/01_ss.jpg");}
+ 0% {background-image: url(/assets/Buffaloes/01_ss.jpg);}
+ 50% {background-image: url(/assets/Buffaloes/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Buffaloes/01_ss.jpg);}
 }
 @keyframes Eagles {
- 0% {background-image: image-url("Eagles/01.jpg");}
- 50% {background-image: image-url("Eagles/02.jpg");;}
- 100% {background-image: image-url("Eagles/01.jpg");}
+ 0% {background-image: url(/assets/Eagles/01.jpg);}
+ 50% {background-image: url(/assets/Eagles/02.jpg);;}
+ 100% {background-image: url(/assets/Eagles/01.jpg);}
 }
 @keyframes Eagles_ss {
- 0% {background-image: image-url("Eagles/01_ss.jpg");}
- 50% {background-image: image-url("Eagles/02_ss.jpg");;}
- 100% {background-image: image-url("Eagles/01_ss.jpg");}
+ 0% {background-image: url(/assets/Eagles/01_ss.jpg);}
+ 50% {background-image: url(/assets/Eagles/02_ss.jpg);;}
+ 100% {background-image: url(/assets/Eagles/01_ss.jpg);}
 }
 
 
