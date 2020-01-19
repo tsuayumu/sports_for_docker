@@ -1,4 +1,5 @@
 class OpeningStartingLineupController < ApplicationController
+	before_action :permit_all_parameters, only: [:create, :create_comment]
 
 	def index
 		@team = Team.team(params[:team])
@@ -24,5 +25,10 @@ class OpeningStartingLineupController < ApplicationController
 	private
 	def default_lineup
 		OpeningStartingLineup::DefaultLineups.new(params[:team], @year).lineup
+	end
+
+	def permit_all_parameters
+		# strong_parameterが解決できないため暫定対応
+		ActionController::Parameters.permit_all_parameters = true
 	end
 end

@@ -158,7 +158,7 @@ class OpeningStartingLineup::DefaultLineups
 
 	def name_to_id(team, order)
 		player = Player.where(year: @year).where(team_id: Team.team_id(@team_name)).where("name like '%#{team[order]}%'").take
-		raise team[order].inspect if player.nil?
+		return nil if player.nil?
 		player.id
 	end
 end

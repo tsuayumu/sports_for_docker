@@ -15,10 +15,10 @@ nav#header.uk-navbar[data-uk-sticky]
         = link_to "home", root_path
       - central_teams_for_views.each do |team|
         li
-          = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", style:  "height: 40px", alt: team.name), index_opening_starting_lineup_path(year: 2019, team: team.name_en)
+          = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", style:  "height: 40px", alt: team.name), index_opening_starting_lineup_path(year: 2020, team: team.name_en)
       - pacific_teams_for_views.each do |team|
         li
-          = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", style:  "height: 40px", alt: team.name), index_opening_starting_lineup_path(year: 2019, team: team.name_en)
+          = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", style:  "height: 40px", alt: team.name), index_opening_starting_lineup_path(year: 2020, team: team.name_en)
   div.uk-button-dropdown.visible-ss[data-uk-dropdown]
     button.uk-button
       | Hover me <i class="uk-icon-caret-down"></i>

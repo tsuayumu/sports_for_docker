@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-	has_one :player_record2017
+	has_one :player_record
 	has_many :lineup
 	belongs_to :team
 

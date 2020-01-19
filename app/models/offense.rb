@@ -18,8 +18,8 @@ class Offense
 		1..9.times do
 			until @out == 3 do
 				batter = @lineup.find_by(order: @order).player
-				if batter.player_record2017.try!(:average) && hit_probability((batter.player_record2017.average * 1000).to_i)
-					if homerun_probability(batter.player_record2017.try!(:homerun))
+				if batter.player_record.try!(:average) && hit_probability((batter.player_record.average * 1000).to_i)
+					if homerun_probability(batter.player_record.try!(:homerun))
 						homerun
 					else
 						hit

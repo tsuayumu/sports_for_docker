@@ -28,6 +28,9 @@ FileUtils.chdir APP_ROOT do
   # puts "\n== insert Initialize data =="
   # system! "bin/rake db:seed"
 
+  puts "\n== Create Player =="
+  system! "bin/rails runner batch/players.rb"
+
   puts "\n== Starting application server =="
   system! "bin/rails restart"
 end

@@ -63,17 +63,17 @@ div[id="#{@team.name_en.capitalize}"]
 									- opening_lineup.lineup.each_with_index do |order, index|
 										- player = order.player
 										tr[style="text-align: center"]
-											- unless player.player_record2017.nil?
+											- unless player.player_record.nil?
 												td
 													| #{index+1}
 												td
 													| #{player.name.gsub(/\p{blank}/," ")}
 												td
-													| .#{(player.player_record2017.average*1000).floor}
+													| .#{(player.player_record.average*1000).floor}
 												td
-													| #{player.player_record2017.homerun}
+													| #{player.player_record.homerun}
 												td
-													| #{player.player_record2017.rbi}
+													| #{player.player_record.rbi}
 											- else
 												td
 													| #{index+1}
@@ -122,17 +122,17 @@ div[id="#{@team.name_en.capitalize}"]
 							- opening_lineup.lineup.each_with_index do |order, index|
 								- player = order.player
 								tr[style="text-align: center"]
-									- unless player.player_record2017.nil?
+									- unless player.player_record.nil?
 										td
 											| #{index+1}
 										td
 											| #{player.name.gsub(/\p{blank}/," ")}
 										td
-											| .#{(player.player_record2017.average*1000).floor}
+											| .#{(player.player_record.average*1000).floor}
 										td
-											| #{player.player_record2017.homerun}
+											| #{player.player_record.homerun}
 										td
-											| #{player.player_record2017.rbi}
+											| #{player.player_record.rbi}
 									- else
 										td
 											| #{index+1}
