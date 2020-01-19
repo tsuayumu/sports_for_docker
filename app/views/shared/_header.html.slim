@@ -29,7 +29,7 @@ nav#header.uk-navbar[data-uk-sticky]
         div.uk-grid.uk-grid-width-1-2
           - central_teams_for_views.each do |team|
             li
-              = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", alt: team.name), index_opening_starting_lineup_path(year: 2018, team: team.name_en)
+              = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", alt: team.name), index_opening_starting_lineup_path(year: 2020, team: team.name_en)
           - pacific_teams_for_views.each do |team|
             li
-              = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", alt: team.name), index_opening_starting_lineup_path(year: 2018, team: team.name_en)
+              = link_to image_tag("shared/team-logos/#{team.name_en}.jpg", alt: team.name), index_opening_starting_lineup_path(year: 2020, team: team.name_en)
