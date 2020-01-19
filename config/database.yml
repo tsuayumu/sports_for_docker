@@ -52,5 +52,3 @@ test:
 production:
   <<: *default
   database: baseball_production
-  username: baseball
-  password: <%= ENV['BASEBALL_DATABASE_PASSWORD'] %>
