@@ -52,3 +52,4 @@ test:
 production:
   <<: *default
   database: baseball_production
+  host: <%= ENV['DATABASE_HOST'] %>

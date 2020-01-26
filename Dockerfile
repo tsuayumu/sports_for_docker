@@ -9,4 +9,4 @@ RUN mkdir -p tmp/pids
 EXPOSE 3001
 
 ENTRYPOINT ["bundle", "exec"]
-CMD ["puma", "-C", "config/puma.rb", "-p", "3001"]
+CMD ["bin/rails", "s", "-p", "3001", "-e", " production"]
