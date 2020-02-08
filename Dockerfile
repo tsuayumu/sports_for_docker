@@ -6,7 +6,6 @@ RUN bundle install --deployment --without development test
 COPY . /app/sports
 RUN mkdir -p tmp/pids
 
-EXPOSE 3001
+EXPOSE 3000
 
-ENTRYPOINT ["bundle", "exec"]
-CMD ["bin/rails", "s", "-p", "3001", "-e", " production"]
+CMD ["bin/setup"]

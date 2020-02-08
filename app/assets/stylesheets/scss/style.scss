@@ -381,7 +381,7 @@ $color-04: #f2f2f2; //ほぼ白
 #Giants {
 	background-attachment: fixed;
 	background-size: 110%;
-    background-color: #fff;
+    background-color: #000;
     @media screen and (min-width: 479px) {
     	animation: Giants 20s linear infinite;
     }

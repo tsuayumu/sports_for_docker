@@ -23,21 +23,22 @@ div[id="#{@team.name_en.capitalize}"]
 	div.uk-container.uk-container-center
 		h1.page-tit.white
 			| #{@team.name} #{@year}開幕スタメン予想
-		div.form-content
-			= form_for @lineup_form, url: :create_opening_starting_lineup do |f|
-				h2.white
-					| 打順入力
-				- 9.times do |n|	
-					= f.fields_for "lineups[#{n}]" do |m|
-						div.block
-							| #{n+1}番: #{m.select :player_id, @select_players, required: true, selected: @lineup_form.lineups[n.to_s][:player_id]}
-							= m.hidden_field :order, value: n+1
-				= f.hidden_field :team_id, value: @team.id
-				= f.hidden_field :year, value: @year
-				// | user: #{f.text_field :user_id}
-				= f.submit '投稿'
-					p
-						| ＊デフォルトは管理人予想
+		- if Time.now < Time.new(@year, 4, 1)
+			div.form-content
+				= form_for @lineup_form, url: :create_opening_starting_lineup do |f|
+					h2.white
+						| 打順入力
+					- 9.times do |n|	
+						= f.fields_for "lineups[#{n}]" do |m|
+							div.block
+								| #{n+1}番: #{m.select :player_id, @select_players, required: true, selected: @lineup_form.lineups[n.to_s][:player_id]}
+								= m.hidden_field :order, value: n+1
+					= f.hidden_field :team_id, value: @team.id
+					= f.hidden_field :year, value: @year
+					// | user: #{f.text_field :user_id}
+					= f.submit '投稿'
+						p
+							| ＊デフォルトは管理人予想
 
 		h2.white
 			| 投稿一覧#{@opening_lineups.count}件
