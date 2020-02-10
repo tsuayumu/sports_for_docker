@@ -1,4 +1,6 @@
 class RotationManageController < ApplicationController
+  before_action :permit_all_parameters, only: [:create]
+
   def index
     @team = Team.team(params[:team])
     @year = params[:year]
@@ -12,4 +14,11 @@ class RotationManageController < ApplicationController
 		@form.save
 		redirect_to :index_rotation_manage
   end
+
+  private
+
+  def permit_all_parameters
+		# strong_parameterが解決できないため暫定対応
+		ActionController::Parameters.permit_all_parameters = true
+	end
 end

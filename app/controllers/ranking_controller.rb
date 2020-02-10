@@ -1,4 +1,5 @@
 class RankingController < ApplicationController
+	before_action :permit_all_parameters, only: [:create]
 
 	def index
 		@league = League.league(params[:league])
@@ -23,5 +24,10 @@ class RankingController < ApplicationController
 			team_and_id << [team.name, team.id]
 		end
 		team_and_id
+	end
+
+	def permit_all_parameters
+		# strong_parameterが解決できないため暫定対応
+		ActionController::Parameters.permit_all_parameters = true
 	end
 end
