@@ -37,11 +37,11 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Create League and team =="
   system! "bin/rails runner batch/init.rb"
 
-  puts "\n== Create Player =="
-  system! "bin/rails runner batch/players.rb"
+  puts "\n== Create Batter =="
+  system! "bin/rails runner batch/batters.rb"
 
-  puts "\n== Update Player =="
-  system! "bin/rails runner batch/2020/update_player.rb"
+  puts "\n== Update Batter =="
+  system! "bin/rails runner batch/2020/update_batter.rb"
 
   puts "\n== Precompile =="
   system! "bin/rails assets:precompile"

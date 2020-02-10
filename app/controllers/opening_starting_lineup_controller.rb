@@ -7,7 +7,7 @@ class OpeningStartingLineupController < ApplicationController
 		@lineup_form = OpeningStartingLineupForm.new(default_lineup.lineup)
 		@opening_lineups = LineupManage.team_lienups(params[:team], params[:year]).reverse
 		@comment_form = OpeningStartingLineupCommentForm.new
-		@select_players = select_player_by_default_sort
+		@select_players = select_batter_by_default_sort
 	end
 
 	def create
@@ -33,11 +33,11 @@ class OpeningStartingLineupController < ApplicationController
 		ActionController::Parameters.permit_all_parameters = true
 	end
 
-	def select_player_by_default_sort
-		players = Player.team_player(@team.id, @year)
-		sort_players = players.select do |p|
+	def select_batter_by_default_sort
+		batters = Batter.name_and_id_by(@team.id, @year)
+		sort_batters = batters.select do |p|
 			default_lineup.lineup_player_ids.include?(p[1])
 		end
-		(sort_players + players).uniq{|p| p[1]}
+		(sort_batters + batters).uniq{|p| p[1]}
 	end
 end

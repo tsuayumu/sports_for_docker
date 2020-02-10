@@ -51,7 +51,7 @@ add_index "lineup_manages", ["team_id"], name: "index_lineup_manages_on_team_id"
 add_index "lineup_manages", ["user_id"], name: "index_lineup_manages_on_user_id", using: :btree
 
 create_table "lineups", force: true do |t|
-  t.integer "player_id"
+  t.integer "batter_id"
   t.integer "lineup_manage_id"
   t.integer "order",            null: false
 end
@@ -69,25 +69,19 @@ end
 add_index "opening_starting_lineup_comments", ["opening_starting_lineup_id"], name: "index_opening_starting_lineup_id", using: :btree
 add_index "opening_starting_lineup_comments", ["user_id"], name: "index_opening_starting_user_id", using: :btree
 
-create_table "player_records", force: true do |t|
-  t.integer  "player_id"
+create_table "batter_records", force: true do |t|
+  t.integer  "batter_id"
   t.decimal  "average",    precision: 4, scale: 3, default: 0.0, null: false
   t.integer  "rbi",                                default: 0,   null: false
   t.integer  "homerun",                            default: 0,   null: false
-  t.integer  "match",                              default: 0,   null: false
-  t.integer  "win",                                default: 0,   null: false
-  t.integer  "defeat",                             default: 0,   null: false
-  t.integer  "hold",                               default: 0,   null: false
-  t.integer  "save_point",                         default: 0,   null: false
   t.datetime "created_at"
   t.datetime "updated_at"
-  t.decimal  "era",        precision: 4, scale: 2, default: 0.0, null: false
   t.integer  "year",       default: 2017
 end
 
-add_index "player_records", ["player_id"], name: "index_player_records_on_player_id", using: :btree
+add_index "batter_records", ["batter_id"], name: "index_batter_records_on_batter_id", using: :btree
 
-create_table "players", force: true do |t|
+create_table "batters", force: true do |t|
   t.string   "name",                      null: false
   t.integer  "team_id",                   null: false
   t.datetime "created_at"
@@ -95,7 +89,7 @@ create_table "players", force: true do |t|
   t.integer  "year",       default: 2017
 end
 
-add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
+add_index "batters", ["team_id"], name: "index_batters_on_team_id", using: :btree
 
 create_table "ranking_manages", force: true do |t|
   t.integer  "user_id"

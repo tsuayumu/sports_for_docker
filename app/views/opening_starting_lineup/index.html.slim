@@ -31,7 +31,7 @@ div[id="#{@team.name_en.capitalize}"]
 					- 9.times do |n|	
 						= f.fields_for "lineups[#{n}]" do |m|
 							div.block
-								| #{n+1}番: #{m.select :player_id, @select_players, required: true, selected: @lineup_form.lineups[n.to_s][:player_id]}
+								| #{n+1}番: #{m.select :batter_id, @select_players, required: true, selected: @lineup_form.lineups[n.to_s][:batter_id]}
 								= m.hidden_field :order, value: n+1
 					div.block
 						| いちおしポイント
@@ -66,19 +66,19 @@ div[id="#{@team.name_en.capitalize}"]
 									td
 										|　打点
 									- opening_lineup.lineup.each_with_index do |order, index|
-										- player = order.player
+										- player = order.batter
 										tr[style="text-align: center"]
-											- unless player.player_record.nil?
+											- unless player.batter_record.nil?
 												td
 													| #{index+1}
 												td
 													| #{player.name.gsub(/\p{blank}/," ")}
 												td
-													| .#{(player.player_record.average*1000).floor}
+													| .#{(player.batter_record.average*1000).floor}
 												td
-													| #{player.player_record.homerun}
+													| #{player.batter_record.homerun}
 												td
-													| #{player.player_record.rbi}
+													| #{player.batter_record.rbi}
 											- else
 												td
 													| #{index+1}
@@ -130,19 +130,19 @@ div[id="#{@team.name_en.capitalize}"]
 								td
 									|　打点
 							- opening_lineup.lineup.each_with_index do |order, index|
-								- player = order.player
+								- player = order.batter
 								tr[style="text-align: center"]
-									- unless player.player_record.nil?
+									- unless player.batter_record.nil?
 										td
 											| #{index+1}
 										td
 											| #{player.name.gsub(/\p{blank}/," ")}
 										td
-											| .#{(player.player_record.average*1000).floor}
+											| .#{(player.batter_record.average*1000).floor}
 										td
-											| #{player.player_record.homerun}
+											| #{player.batter_record.homerun}
 										td
-											| #{player.player_record.rbi}
+											| #{player.batter_record.rbi}
 									- else
 										td
 											| #{index+1}

@@ -9,7 +9,7 @@ class OpeningStartingLineup::DefaultLineups
 			"大城　卓三",
 			"亀井　善行",
 			"山下　航汰",
-			"菅野　智之",
+			"投手",
 			"重信　慎之介"
 		],
 		tigers: [
@@ -21,7 +21,7 @@ class OpeningStartingLineup::DefaultLineups
 			"中谷　将大",
 			"髙山　俊",
 			"梅野　隆太郎",
-			"藤浪　晋太郎"
+			"投手"
 		],
 		swallows: [
 			"坂口　智隆",
@@ -31,7 +31,7 @@ class OpeningStartingLineup::DefaultLineups
 			"雄平",
 			"中山　翔太",
 			"中村　悠平",
-			"小川　泰弘",
+			"投手",
 			"川端　慎吾"
 		],
 		carp: [
@@ -43,7 +43,7 @@ class OpeningStartingLineup::DefaultLineups
 			"安部",
 			"小園",
 			"會澤",
-			"薮田"
+			"投手"
 		],
 		baystars: [
 			"桑原",
@@ -53,7 +53,7 @@ class OpeningStartingLineup::DefaultLineups
 			"ロペス",
 			"宮﨑",
 			"戸柱",
-			"今永",
+			"投手",
 			"倉本"
 		],
 		dragons: [
@@ -65,7 +65,7 @@ class OpeningStartingLineup::DefaultLineups
 			"高橋",
 			"福田",
 			"阿部",
-			"大野"
+			"投手"
 		],
 		hawks: [
 			"今宮",
@@ -149,7 +149,7 @@ class OpeningStartingLineup::DefaultLineups
 	def lineup_player_ids
 		result = []
 		LINEUPS[@team_name.to_sym].each do |player_name|
-			player_id = Player.where(
+			player_id = Batter.where(
 					year: @year,
 					team_id: Team.team_id(@team_name)
 				)
@@ -160,7 +160,7 @@ class OpeningStartingLineup::DefaultLineups
 	end
 
 	def name_to_id(team, order)
-		player = Player.where(
+		player = Batter.where(
 				year: @year,
 				team_id: Team.team_id(@team_name)
 			)
@@ -176,7 +176,7 @@ class OpeningStartingLineup::DefaultLineups
 		team_id = {}
 		team_id[:lineups] = {}
 		9.times do |n|
-			team_id[:lineups].store(n.to_s, { player_id: name_to_id(team, n) })
+			team_id[:lineups].store(n.to_s, { batter_id: name_to_id(team, n) })
 		end
 		team_id
 	end
