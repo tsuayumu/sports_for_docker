@@ -149,11 +149,12 @@ class OpeningStartingLineup::DefaultLineups
 	def lineup_player_ids
 		result = []
 		LINEUPS[@team_name.to_sym].each do |player_name|
-			result << Player.where(
+			player_id = Player.where(
 					year: @year,
 					team_id: Team.team_id(@team_name)
 				)
-				.where("name like '%#{player_name}%'").take.id
+				.where("name like '%#{player_name}%'").take&.id
+			result << player_id if player_id
 		end
 		result
 	end
