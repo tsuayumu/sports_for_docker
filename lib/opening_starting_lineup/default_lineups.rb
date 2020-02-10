@@ -120,7 +120,7 @@ class OpeningStartingLineup::DefaultLineups
 			"島内",
 			"岡島",
 			"オコエ",
-			"嶋"
+			"田中　和基"
 		],
 		lions: [
 			"スパンジェンバーグ",

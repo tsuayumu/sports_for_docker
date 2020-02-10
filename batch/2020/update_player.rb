@@ -1,6 +1,7 @@
 Player.find_by(name: "バレンティン", year: 2020).update(team_id: 7)
 Player.find_by(name: "福田　秀平", year: 2020).update(team_id: 10)
 Player.find_by(name: "嶋　基宏", year: 2020).update(team_id: 3)
+Player.find_by(name: "鈴木　大地", year: 2020).update(team_id: 11)
 Player.find_or_create_by(name: "ジョーンズ", year: 2020, team_id: 9)
 Player.find_or_create_by(name: "ロドリゲス", year: 2020, team_id: 9)
 Player.find_or_create_by(name: "スパンジェンバーグ", year: 2020, team_id: 12)
