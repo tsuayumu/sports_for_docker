@@ -50,6 +50,18 @@ end
 add_index "lineup_manages", ["team_id"], name: "index_lineup_manages_on_team_id", using: :btree
 add_index "lineup_manages", ["user_id"], name: "index_lineup_manages_on_user_id", using: :btree
 
+create_table "rotation_manages", force: true do |t|
+  t.integer  "user_id"
+  t.integer  "team_id",                null: false
+  t.integer  "year",                   null: false
+  t.text   "comment"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "rotation_manages", ["team_id"], name: "index_rotation_manages_on_team_id", using: :btree
+add_index "rotation_manages", ["user_id"], name: "index_rotation_manages_on_user_id", using: :btree
+
 create_table "lineups", force: true do |t|
   t.integer "batter_id"
   t.integer "lineup_manage_id"
@@ -57,6 +69,14 @@ create_table "lineups", force: true do |t|
 end
 
 add_index "lineups", ["lineup_manage_id"], name: "index_lineups_on_lineup_manage_id", using: :btree
+
+create_table "rotations", force: true do |t|
+  t.integer "pitcher_id"
+  t.integer "rotation_manage_id"
+  t.integer "order",            null: false
+end
+
+add_index "rotations", ["rotation_manage_id"], name: "index_rotations_on_rotation_manage_id", using: :btree
 
 create_table "opening_starting_lineup_comments", force: true do |t|
   t.integer  "opening_starting_lineup_id", null: false
@@ -68,6 +88,17 @@ end
 
 add_index "opening_starting_lineup_comments", ["opening_starting_lineup_id"], name: "index_opening_starting_lineup_id", using: :btree
 add_index "opening_starting_lineup_comments", ["user_id"], name: "index_opening_starting_user_id", using: :btree
+
+create_table "rotation_comments", force: true do |t|
+  t.integer  "rotation_manage_id", null: false
+  t.integer  "user_id"
+  t.string   "comment",                    null: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "rotation_comments", ["rotation_manage_id"], name: "index_rotation_manage_id", using: :btree
+add_index "rotation_comments", ["user_id"], name: "index_rotation_comments_user_id", using: :btree
 
 create_table "batter_records", force: true do |t|
   t.integer  "batter_id"
@@ -81,6 +112,21 @@ end
 
 add_index "batter_records", ["batter_id"], name: "index_batter_records_on_batter_id", using: :btree
 
+create_table "pitcher_records", force: true do |t|
+  t.integer  "pitcher_id"
+  t.integer  "match",                              default: 0,   null: false
+  t.integer  "win",                                default: 0,   null: false
+  t.integer  "defeat",                             default: 0,   null: false
+  t.integer  "hold",                               default: 0,   null: false
+  t.integer  "save_point",                         default: 0,   null: false
+  t.decimal  "era",        precision: 4, scale: 2, default: 0.0, null: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.integer  "year",       default: 2017
+end
+
+add_index "pitcher_records", ["pitcher_id"], name: "index_pitcher_records_on_pitcher_id", using: :btree
+
 create_table "batters", force: true do |t|
   t.string   "name",                      null: false
   t.integer  "team_id",                   null: false
@@ -90,6 +136,16 @@ create_table "batters", force: true do |t|
 end
 
 add_index "batters", ["team_id"], name: "index_batters_on_team_id", using: :btree
+
+create_table "pitchers", force: true do |t|
+  t.string   "name",                      null: false
+  t.integer  "team_id",                   null: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.integer  "year",       default: 2017
+end
+
+add_index "pitchers", ["team_id"], name: "index_pitchers_on_team_id", using: :btree
 
 create_table "ranking_manages", force: true do |t|
   t.integer  "user_id"
@@ -108,6 +164,7 @@ add_index "ranking_manages", ["user_id"], name: "index_ranking_manages_on_user_i
 create_table "rankings", force: true do |t|
   t.integer  "rank",       null: false
   t.integer  "team_id"
+  t.integer  "ranking_manage_id"
   t.datetime "created_at"
   t.datetime "updated_at"
 end

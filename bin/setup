@@ -38,7 +38,7 @@ FileUtils.chdir APP_ROOT do
   system! "bin/rails runner batch/init.rb"
 
   puts "\n== Create Batter =="
-  system! "bin/rails runner batch/batters.rb"
+  system! "bin/rails runner batch/players.rb"
 
   puts "\n== Update Batter =="
   system! "bin/rails runner batch/2020/update_batter.rb"

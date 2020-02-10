@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   post 'opening_starting_lineup/:team/:year' => 'opening_starting_lineup#create', as: :create_opening_starting_lineup
   post 'opening_starting_lineup/:team/:year/comment' => 'opening_starting_lineup#create_comment', as: :create_opening_starting_lineup_comment
 
+  get 'opening_rotation/:team/:year' => 'rotation_manage#index', as: :index_rotation_manage
+  post 'opening_rotation/:team/:year' => 'rotation_manage#create', as: :create_rotation_manage
+  post 'opening_rotation/:team/:year/comment' => 'rotation_commnet#create_comment', as: :create_rotation_comment
+
   post 'battle/index' => 'battle#index', as: :index_battle
   post 'battle/create' => 'battle#create', as: :create_battle
 

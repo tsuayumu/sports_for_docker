@@ -1,7 +1,7 @@
 div#home
 	section#home-01.flex
 		h1.tit
-			| 開幕スタメンを当てようぜ!
+			| プロ野球を楽しもう！
 
 	section#home-02.flex.uk-scrollspy-init-inview
 		div.uk-container.uk-container-center
@@ -24,6 +24,18 @@ div#home
 				- @pacific_teams.each do |team|
 					li
 						= team.name
+	
+	section#home-03.flex
+		div.uk-container.uk-container-center
+			h2.home-tit
+				| 順位予想
+			div
+				section.uk-scrollspy-init-inview
+					div.uk-grid.uk-grid-width-large-1-2.uk-grid-width-small-1-2[data-uk-grid-margin]
+						section.uk-scrollspy-init-inview
+							= link_to image_tag("shared/league-logos/central.jpg", width: "80%"), index_ranking_path(year: 2020, league: :central)
+						section.uk-scrollspy-init-inview
+							= link_to image_tag("shared/league-logos/pacific.jpg", width: "80%"), index_ranking_path(year: 2020, league: :pacific)
 
 	section#home-03.flex
 		div.uk-container.uk-container-center
