@@ -61,3 +61,5 @@ gem 'slim-rails'
 # gem 'holiday_japan'
 
 gem 'sass-rails'
+
+gem 'twitter'

@@ -1,5 +1,6 @@
 class League < ActiveRecord::Base
 	has_many :teams
+	has_many :ranking_manages
 
 	enum status: { central: 1, pacific: 2 }
 
