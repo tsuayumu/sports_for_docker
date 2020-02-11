@@ -7,6 +7,8 @@ class LineupManage < ActiveRecord::Base
 	scope :team, ->(team){ where(team_id: team) }
 	scope :year, ->(year){ where(year: year) }
 
+	delegate :name, to: :team, prefix: :team, allow_nil: true
+
 	class << self
 		def team_lienups(team, year)
 			team_id = Team.team_id(team)

@@ -1,6 +1,9 @@
 class RankingManage < ActiveRecord::Base
 	has_many :ranking
+	belongs_to :league
 	accepts_nested_attributes_for :ranking
+
+	delegate :name, to: :league, prefix: :league, allow_nil: true
 
 	class << self
 		def rankings(league, year)

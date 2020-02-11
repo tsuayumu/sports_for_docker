@@ -1,7 +1,8 @@
 class Team < ActiveRecord::Base
 	has_many :opening_starting_lineup
 	belongs_to :league
-	has_many :player
+	has_many :lineup_manages
+	has_many :rotation_manages
 	has_many :rankings
 
 	scope :team_id, ->(name_en){ find_by(name_en: name_en).id}
