@@ -15,6 +15,15 @@ html
 		script src="/assets/uikit.min.js"	
 		= csrf_meta_tags
 		meta[content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"]
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71664741-4"></script>
+		javascript:
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-71664741-4');
+
 	body#body
 		= render partial: "shared/header"
 

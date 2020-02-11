@@ -6,10 +6,19 @@ section#footer
       | セリーグ
     - central_teams_for_views.each do |team|
       li
-        = link_to team.name, index_opening_starting_lineup_path(year: 2020, team: team.name_en)
+        = link_to "#{team.name}　スタメン", index_opening_starting_lineup_path(year: 2020, team: team.name_en)
+      li
+        = link_to "#{team.name}　ローテーション", index_rotation_manage_path(year: 2020, team: team.name_en)
   ul.footer-work
     p.mt0
       | パリーグ
     - pacific_teams_for_views.each do |team|
       li
-        = link_to team.name, index_opening_starting_lineup_path(year: 2020, team: team.name_en)
+        = link_to "#{team.name}　スタメン", index_opening_starting_lineup_path(year: 2020, team: team.name_en)
+      li
+        = link_to "#{team.name}　ローテーション", index_rotation_manage_path(year: 2020, team: team.name_en)
+  ul
+    li
+      = link_to "セ・リーグ順位予想", index_ranking_path(year: 2020, league: :central), class: 'text-light'
+    li
+      = link_to "パ・リーグ順位予想", index_ranking_path(year: 2020, league: :pacific), class: 'text-light'

@@ -32,6 +32,9 @@ div[id="#{@team.name_en.capitalize}"]
 					= f.submit '投稿'
 						p
 							| ＊デフォルトは管理人予想
+		p.text-center
+			= link_to index_opening_starting_lineup_path(year: @year, team: @team.name_en), class: 'text-light' do
+				| 開幕スタメン予想はこちら
 
 		h2.white
 			| 投稿一覧#{@rotation_manages.count}件
@@ -74,26 +77,20 @@ div[id="#{@team.name_en.capitalize}"]
 											- else
 												td
 													|
-											- unless player.pitcher_record.nil?
-												td
-													| #{player.name.gsub(/\p{blank}/," ")}
-												td
-													| #{player.pitcher_record.match}
-												td
-													| #{player.pitcher_record.era}
-												td
-													| #{player.pitcher_record.win}
-												td
-													| #{player.pitcher_record.defeat}
-												td
-													| #{player.pitcher_record.hold}
-												td
-													| #{player.pitcher_record.save_point}
-											- else
-												td
-													| #{index+1}
-												td
-													| #{player.name.gsub(/\p{blank}/," ")}
+											td
+												| #{player.name.gsub(/\p{blank}/," ")}
+											td
+												| #{player.pitcher_record&.match}
+											td
+												| #{player.pitcher_record&.era}
+											td
+												| #{player.pitcher_record&.win}
+											td
+												| #{player.pitcher_record&.defeat}
+											td
+												| #{player.pitcher_record&.hold}
+											td
+												| #{player.pitcher_record&.save_point}
 							- if rotation_manage.comment.present?
 								p
 									| いちおしポイント

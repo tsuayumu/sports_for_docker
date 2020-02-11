@@ -43,6 +43,9 @@ div[id="#{@team.name_en.capitalize}"]
 					= f.submit '投稿'
 						p
 							| ＊デフォルトは管理人予想
+		p.text-center
+			= link_to index_rotation_manage_path(year: @year, team: @team.name_en), class: 'text-light' do
+				| 開幕ローテーション予想はこちら
 
 		h2.white
 			| 投稿一覧#{@opening_lineups.count}件
@@ -84,7 +87,7 @@ div[id="#{@team.name_en.capitalize}"]
 													| #{index+1}
 												td
 													| #{player.name.gsub(/\p{blank}/," ")}
-							- if opening_lineup.comment
+							- if opening_lineup.comment.present?
 								p
 									| いちおしポイント
 									br
@@ -148,7 +151,7 @@ div[id="#{@team.name_en.capitalize}"]
 											| #{index+1}
 										td
 											| #{player.name.gsub(/\p{blank}/," ")}
-						- if opening_lineup.comment
+						- if opening_lineup.comment.present?
 							p
 								| いちおしポイント
 								br
