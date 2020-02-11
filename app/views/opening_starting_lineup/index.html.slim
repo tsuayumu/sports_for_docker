@@ -92,12 +92,12 @@ div[id="#{@team.name_en.capitalize}"]
 									| いちおしポイント
 									br
 									= opening_lineup.comment
-							p[class="record-#{opening_lineup.id}"]
-								| 勝敗：#{opening_lineup.win} 勝 #{opening_lineup.lose} 敗 #{opening_lineup.draw} 分
-							= form_tag(create_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json',class: "js-battle-create") do
-								= submit_tag "このチームで戦う", opening_lineup_id: opening_lineup.id
-							= form_tag(index_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json', class: "js-battle-index") do
-								= submit_tag "このチームと戦う", opening_lineup_id: opening_lineup.id
+							/ p[class="record-#{opening_lineup.id}"]
+							/ 	| 勝敗：#{opening_lineup.win} 勝 #{opening_lineup.lose} 敗 #{opening_lineup.draw} 分
+							/ = form_tag(create_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json',class: "js-battle-create") do
+							/ 	= submit_tag "このチームで戦う", opening_lineup_id: opening_lineup.id
+							/ = form_tag(index_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json', class: "js-battle-index") do
+							/ 	= submit_tag "このチームと戦う", opening_lineup_id: opening_lineup.id
 
 					section.uk-width-3-5.coment
 						h3
@@ -156,13 +156,13 @@ div[id="#{@team.name_en.capitalize}"]
 								| いちおしポイント
 								br
 								= opening_lineup.comment
-						p[class="record-#{opening_lineup.id}"]
-							| 勝敗：#{opening_lineup.win} 勝 #{opening_lineup.lose} 敗 #{opening_lineup.draw} 分
+						/ p[class="record-#{opening_lineup.id}"]
+						/ 	| 勝敗：#{opening_lineup.win} 勝 #{opening_lineup.lose} 敗 #{opening_lineup.draw} 分
 
-						= form_tag(create_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json',class: "js-battle-create") do
-								= submit_tag "このチームで戦う", opening_lineup_id: opening_lineup.id
-						= form_tag(index_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json', class: "js-battle-index") do
-							= submit_tag "このチームと戦う", opening_lineup_id: opening_lineup.id
+						/ = form_tag(create_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json',class: "js-battle-create") do
+						/ 		= submit_tag "このチームで戦う", opening_lineup_id: opening_lineup.id
+						/ = form_tag(index_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json', class: "js-battle-index") do
+						/ 	= submit_tag "このチームと戦う", opening_lineup_id: opening_lineup.id
 
 					section.coment
 						h3[style="padding:10px 0 0 0;"]

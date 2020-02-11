@@ -10,7 +10,6 @@ div[id="#{@team.name_en.capitalize}"]
 					- 10.times do |n|	
 						= f.fields_for "rotations[#{n}]" do |m|
 							div.block
-								/ | #{n+1}番: #{m.select :pitcher_id, @select_players, required: true, selected: @rotation_form.rotations[n.to_s][:pitcher_id]}
 								- if n == 0
 									p.mb-0.mt-1
 										| 先発
@@ -20,7 +19,7 @@ div[id="#{@team.name_en.capitalize}"]
 								- elsif n == 9
 									p.mb0.mt-1
 										| 抑え
-								| #{m.select :pitcher_id, @select_players, required: true}
+								| #{m.select :pitcher_id, @select_players, required: true, selected: @default_rotations.pitcher_id_by(n)}
 								= m.hidden_field :order, value: n+1
 					div.block.mb-2.mt-2
 						| いちおしポイント

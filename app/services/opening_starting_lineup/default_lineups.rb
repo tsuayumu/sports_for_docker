@@ -159,16 +159,6 @@ class OpeningStartingLineup::DefaultLineups
 		result
 	end
 
-	def name_to_id(team, order)
-		player = Batter.where(
-				year: @year,
-				team_id: Team.team_id(@team_name)
-			)
-			.where("name like '%#{team[order]}%'").take
-		return nil if player.nil?
-		player.id
-	end
-
 	private
 
 	def lineup_to_id
@@ -179,5 +169,15 @@ class OpeningStartingLineup::DefaultLineups
 			team_id[:lineups].store(n.to_s, { batter_id: name_to_id(team, n) })
 		end
 		team_id
+	end
+
+	def name_to_id(team, order)
+		player = Batter.where(
+				year: @year,
+				team_id: Team.team_id(@team_name)
+			)
+			.where("name like '%#{team[order]}%'").take
+		return nil if player.nil?
+		player.id
 	end
 end

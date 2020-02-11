@@ -5,6 +5,7 @@ class RotationManageController < ApplicationController
     @team = Team.team(params[:team])
     @year = params[:year]
     @rotation_form = RotationForm.new
+    @default_rotations = DefaultRotations.new(params[:team], params[:year])
     @rotation_manages = RotationManage.team(@team).year(@year).reverse
     @select_players = Pitcher.name_and_id_by(@team.id, @year)
   end

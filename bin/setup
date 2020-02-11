@@ -43,6 +43,9 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Update Batter =="
   system! "bin/rails runner batch/2020/update_batter.rb"
 
+  puts "\n== Update Pitcher =="
+  system! "bin/rails runner batch/2020/update_pitcher.rb"
+
   puts "\n== Precompile =="
   system! "bin/rails assets:precompile"
 
