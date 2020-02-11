@@ -21,7 +21,7 @@ class RotationManageController < ApplicationController
         tweet_text << "【先発】\r"
       elsif i == 7
         tweet_text << "\r【中継ぎ】\r"
-      elsif i == 9
+      elsif i == 10
         tweet_text << "\r【抑え】\r"
       end
       tweet_text << "#{l.name}\r"
