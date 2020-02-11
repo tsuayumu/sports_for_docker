@@ -150,26 +150,20 @@ div[id="#{@team.name_en.capitalize}"]
 									- else
 										td
 											|
-									- unless player.pitcher_record.nil?
-										td
-											| #{player.name.gsub(/\p{blank}/," ")}
-										td
-											| #{player.pitcher_record.match}
-										td
-											| #{player.pitcher_record.era}
-										td
-											| #{player.pitcher_record.win}
-										td
-											| #{player.pitcher_record.defeat}
-										td
-											| #{player.pitcher_record.hold}
-										td
-											| #{player.pitcher_record.save_point}
-									- else
-										td
-											| #{index+1}
-										td
-											| #{player.name.gsub(/\p{blank}/," ")}
+									td
+										| #{player.name.gsub(/\p{blank}/," ")}
+									td
+										| #{player.pitcher_record&.match}
+									td
+										| #{player.pitcher_record&.era}
+									td
+										| #{player.pitcher_record&.win}
+									td
+										| #{player.pitcher_record&.defeat}
+									td
+										| #{player.pitcher_record&.hold}
+									td
+										| #{player.pitcher_record&.save_point}
 						- if rotation_manage.comment.present?
 							p
 								| いちおしポイント
