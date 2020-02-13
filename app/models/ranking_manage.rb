@@ -11,4 +11,14 @@ class RankingManage < ActiveRecord::Base
 			where(league_id: league_id).where(year: year)
 		end
 	end
+
+	def tweet_text(request_url:, line_code:)
+		result = ''
+		ranking.each.with_index(1) do |r, i|
+			result << "#{i}位　#{r.team_name}#{line_code}"
+		end
+		result << "#{line_code}詳しくはこちら#{line_code}#{request_url} #{line_code}#{line_code}"
+		result << "##{year}#{league_name}順位予想"
+		result
+	end
 end

@@ -12,17 +12,7 @@ class RankingController < ApplicationController
 	def create
 		form = RankingForm.new(params[:ranking_form])
 		form.save
-
-		ranking_manage = form.ranking_manage
-		tweet_text = ''
-		ranking_manage.ranking.each.with_index(1) do |r, i|
-			tweet_text << "#{i}位　#{r.team_name}\r"
-		end
-		tweet_text << "\r詳しくはこちら\r#{request.url} \r\r"
-		tweet_text << "##{ranking_manage.year}#{ranking_manage.league_name}順位予想"
-
-		twitter_client.update(tweet_text)
-
+		twitter_client.update(form.ranking_manage.tweet_text(request_url: request.url, line_code: '\r'))
 		session["create_ranking_#{form.league_id}"] = true
 		redirect_to :index_ranking
 	end

@@ -92,6 +92,8 @@ div[id="#{@team.name_en.capitalize}"]
 									| いちおしポイント
 									br
 									= opening_lineup.comment
+							a href="https://twitter.com/intent/tweet?&text=#{opening_lineup.tweet_text(request_url: request.url, line_code: '%0a')}" target="_blank" class="btn btn-primary"
+								| ツイートする
 							/ p[class="record-#{opening_lineup.id}"]
 							/ 	| 勝敗：#{opening_lineup.win} 勝 #{opening_lineup.lose} 敗 #{opening_lineup.draw} 分
 							/ = form_tag(create_battle_path(opening_lineup_id: opening_lineup.id), remote: true, format: 'json',class: "js-battle-create") do
@@ -156,6 +158,8 @@ div[id="#{@team.name_en.capitalize}"]
 								| いちおしポイント
 								br
 								= opening_lineup.comment
+						a href="https://twitter.com/intent/tweet?&text=#{opening_lineup.tweet_text(request_url: request.url, line_code: '%0a')}" target="_blank" class="btn btn-primary"
+							| ツイートする
 						/ p[class="record-#{opening_lineup.id}"]
 						/ 	| 勝敗：#{opening_lineup.win} 勝 #{opening_lineup.lose} 敗 #{opening_lineup.draw} 分
 

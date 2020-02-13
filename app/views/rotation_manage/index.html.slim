@@ -95,6 +95,8 @@ div[id="#{@team.name_en.capitalize}"]
 									| いちおしポイント
 									br
 									= rotation_manage.comment
+							a href="https://twitter.com/intent/tweet?&text=#{rotation_manage.tweet_text(request_url: request.url, line_code: '%0a')}" target="_blank" class="btn btn-primary"
+								| ツイートする
 
 		/ 			section.uk-width-2-5.coment
 		/ 				h3
@@ -169,6 +171,8 @@ div[id="#{@team.name_en.capitalize}"]
 								| いちおしポイント
 								br
 								= rotation_manage.comment
+						a href="https://twitter.com/intent/tweet?&text=#{rotation_manage.tweet_text(request_url: request.url, line_code: '%0a')}" target="_blank" class="btn btn-primary"
+							| ツイートする
 
 					/ section.coment
 					/ 	h3[style="padding:10px 0 0 0;"]

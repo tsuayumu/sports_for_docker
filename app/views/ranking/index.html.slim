@@ -30,7 +30,7 @@ div[id="Giants"]
 				div.bbs-contet.uk-grid[id="#{ranking_manage.id * 10}"]
 					section.uk-width-2-5.member[style="text-align: center;"]
 						div.back-brack
-							| 予想者： #{ranking_manage.user_id}
+							// | 予想者： #{ranking_manage.user_id}
 							table[border="0"  width="80%" style="color: white"]
 								tr[style="text-align: center"]
 									td
@@ -42,12 +42,14 @@ div[id="Giants"]
 												| #{index+1} 位
 											td
 												| #{ranking.team_name}
+						a href="https://twitter.com/intent/tweet?&text=#{ranking_manage.tweet_text(request_url: request.url, line_code: '%0a')}" target="_blank" class="btn btn-primary"
+							| ツイートする
 
 		div.visible-ss
 			- @ranking_manages.each do |ranking_manage|
 				div#test.bbs-content.uk-container.uk-container-center
 					section.member[style="text-align: center;"]
-						| 予想者： #{ranking_manage.user_id}
+						//| 予想者： #{ranking_manage.user_id}
 						table[border="0"  width="100%" style="color: white"]
 							- ranking_manage.ranking.each_with_index do |ranking, index|
 								tr[style="text-align: center"]
@@ -55,3 +57,5 @@ div[id="Giants"]
 										| #{index+1} 位
 									td
 										| #{ranking.team_name}
+						a href="https://twitter.com/intent/tweet?&text=#{ranking_manage.tweet_text(request_url: request.url, line_code: '%0a')}" target="_blank" class="btn btn-primary"
+							| ツイートする

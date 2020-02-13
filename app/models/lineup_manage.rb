@@ -19,4 +19,15 @@ class LineupManage < ActiveRecord::Base
 	def lineups
 		lineup
 	end
+
+	def tweet_text(request_url:, line_code:)
+		result = ''
+		result << "#{comment}#{line_code}#{line_code}" if comment.present?
+		lineup.each.with_index(1) do |l, i|
+			result << "#{i}番　#{l.name}#{line_code}"
+		end
+		result << "#{line_code}詳しくはこちら#{line_code}#{request_url} #{line_code}#{line_code}"
+		result << "##{team_name} ##{year}開幕スタメン"
+		result
+	end
 end
