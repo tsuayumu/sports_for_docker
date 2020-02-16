@@ -26,8 +26,6 @@ div[id="#{@team.name_en.capitalize}"]
 		- if Time.now < Time.new(@year, 4, 1)
 			div.form-content
 				= form_for @lineup_form, url: :create_opening_starting_lineup do |f|
-					h2.white
-						| 打順入力
 					- 9.times do |n|	
 						= f.fields_for "lineups[#{n}]" do |m|
 							div.block

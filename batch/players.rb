@@ -144,12 +144,17 @@ def create_player_record_pitcher(team, year, y_string)
 	end
 end
 
-YEARS.each do |year, y_string|
-	TEAM.each do |team|
-		create_batter(team, year, y_string)
-		create_player_record_fielder(team, year, y_string)
+# 初期セットアップ時はfalseにする
+skip = true
 
-		create_pitcher(team, year, y_string)
-		create_player_record_pitcher(team, year, y_string)
+unless skip
+	YEARS.each do |year, y_string|
+		TEAM.each do |team|
+			create_batter(team, year, y_string)
+			create_player_record_fielder(team, year, y_string)
+
+			create_pitcher(team, year, y_string)
+			create_player_record_pitcher(team, year, y_string)
+		end
 	end
 end
