@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'top#index'
 
-  get 'opening_starting_lineup/:team/:year' => 'opening_starting_lineup#index', as: :index_opening_starting_lineup
-  post 'opening_starting_lineup/:team/:year' => 'opening_starting_lineup#create', as: :create_opening_starting_lineup
-  post 'opening_starting_lineup/:team/:year/comment' => 'opening_starting_lineup#create_comment', as: :create_opening_starting_lineup_comment
+  get 'lineup_manage/:team/:year' => 'lineup_manage#index', as: :index_lineup_manage
+  post 'lineup_manage' => 'lineup_manage#create', as: :create_lineup_manage
+  post 'lineup_manage_user_comment' => 'lineup_manage_user_comment#create'
 
   get 'opening_rotation/:team/:year' => 'rotation_manage#index', as: :index_rotation_manage
   post 'opening_rotation/:team/:year' => 'rotation_manage#create', as: :create_rotation_manage
