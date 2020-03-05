@@ -57,6 +57,9 @@ class LineupManageController < ApplicationController
 				name: @team.name,
 				name_en: @team.name_en
 			},
+			league: {
+				name_en: @team.league.name_en
+			},
 			selected_players: default_lineup.lineup_player_ids,
 			select_players: res_select_players,
 			lineup_manages: res_lineup_manages
@@ -65,9 +68,23 @@ class LineupManageController < ApplicationController
 
 	def res_select_players
 		@select_batters.map do |b|
+			res_batter(b)
+		end
+	end
+
+	def res_batter(batter)
+		if batter.batter_record
 			{
-				batter_id: b.id,
-				name: b.name
+				batter_id: batter.id,
+				name: batter.name.gsub(/\p{blank}/," "),
+				average: (batter.batter_record.average*1000).floor,
+				homerun: batter.batter_record.homerun,
+				rbi: batter.batter_record.rbi
+			}
+		else
+			{ 
+				batter_id: batter.id,
+				name: batter.name.gsub(/\p{blank}/," ")
 			}
 		end
 	end
@@ -90,16 +107,7 @@ class LineupManageController < ApplicationController
 	def res_lineups(lineup_manage)
 		lineup_manage.lineup.map do |line|
 			batter = line.batter
-			if batter.batter_record
-				{
-					name: batter.name.gsub(/\p{blank}/," "),
-					average: (batter.batter_record.average*1000).floor,
-					homerun: batter.batter_record.homerun,
-					rbi: batter.batter_record.rbi
-				}
-			else
-				{ name: batter.name.gsub(/\p{blank}/," ") }
-			end
+			res_batter(batter)
 		end
 	end
 

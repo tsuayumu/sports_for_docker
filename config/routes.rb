@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   post 'lineup_manage' => 'lineup_manage#create', as: :create_lineup_manage
   post 'lineup_manage_user_comment' => 'lineup_manage_user_comment#create'
 
-  get 'opening_rotation/:team/:year' => 'rotation_manage#index', as: :index_rotation_manage
-  post 'opening_rotation/:team/:year' => 'rotation_manage#create', as: :create_rotation_manage
-  post 'opening_rotation/:team/:year/comment' => 'rotation_commnet#create_comment', as: :create_rotation_comment
+  get 'rotation_manage/:team/:year' => 'rotation_manage#index', as: :index_rotation_manage
+  post 'rotation_manage' => 'rotation_manage#create', as: :create_rotation_manage
+  post 'rotation_manage/:team/:year/comment' => 'rotation_commnet#create_comment', as: :create_rotation_comment
+  post 'rotation_manage_user_comment' => 'rotation_manage_user_comment#create'
 
   post 'battle/index' => 'battle#index', as: :index_battle
   post 'battle/create' => 'battle#create', as: :create_battle
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   post 'dream_battle/create' => 'dream_battle#create', as: :create_dream_battle
 
   get 'ranking/:league/:year' => 'ranking#index', as: :index_ranking
-  post 'ranking/:league/:year' => 'ranking#create', as: :create_ranking
+  post 'ranking_manage' => 'ranking#create', as: :create_ranking
   post 'ranking/:league/:year/comment' => 'ranking#create_comment', as: :create_ranking_comment  
 
   resources :users, only: [:new, :create, :edit, :update]

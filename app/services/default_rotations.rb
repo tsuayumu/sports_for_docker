@@ -152,7 +152,15 @@ class DefaultRotations
   def initialize(team_name, year)
 		@team_name = team_name
 		@year = year
-  end
+	end
+	
+	def pitcher_ids
+		result = []
+		10.times do |n|
+			result << name_to_id(n)
+		end
+		result
+	end
 
   def pitcher_id_by(order)
     name_to_id(order)

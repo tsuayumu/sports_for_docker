@@ -1,18 +1,19 @@
 class RankingController < ApplicationController
-	before_action :permit_all_parameters, only: [:create]
-
 	def index
 		@league = League.league(params[:league])
 		@ranking_manages = RankingManage.rankings(params[:league], params[:year]).reverse
-		@ranking_form = RankingForm.new
-		@select_teams = teams_for_select_form(@league)
 		@year = params[:year]
+
+		render json: res_index
 	end
 
 	def create
-		form = RankingForm.new(params[:ranking_form])
-		form.save
-		ranking_manage = form.ranking_manage
+		ranking_manage = RankingManage.create_by(
+			year: params[:year],
+			league_id: params[:league_id],
+			ranking: params[:ranking]
+		)
+
 		tweet_text = ''
 		ranking_manage.ranking.each.with_index(1) do |r, i|
 			tweet_text << "#{i}位　#{r.team_name}\r"
@@ -21,26 +22,62 @@ class RankingController < ApplicationController
 		tweet_text << "##{ranking_manage.year}#{ranking_manage.league_name}順位予想"
 
 		twitter_client.update(tweet_text)
-		session["create_ranking_#{form.league_id}"] = true
-		redirect_to :index_ranking
+
+		render json: {
+			rankings: res_ranking_manage(ranking_manage)
+		}
 	end
 
 	private
 
-	def teams_for_select_form(league)
-		team_and_id = []
-		league.teams.each do |team|
-			team_and_id << [team.name, team.id]
-		end
-		team_and_id
-	end
-
-	def permit_all_parameters
-		# strong_parameterが解決できないため暫定対応
-		ActionController::Parameters.permit_all_parameters = true
-	end
-
 	def twitter_client
 		TwitterClient.new
+	end
+
+	def res_index
+		{
+			league: {
+				id: @league.id,
+				name: @league.name,
+				name_en: @league.name_en
+			},
+			year: @year,
+			selected_teams: res_selected_teams,
+			select_teams: res_select_teams,
+			ranking_manages: res_ranking_manages
+		}
+	end
+
+	def res_selected_teams
+		if @league.id == 1
+			[1,2,3,4,5,6]
+		else
+			[7,8,9,10,11,12]
+		end
+	end
+
+	def res_select_teams
+		@league.teams.map do |t|
+			{
+				id: t.id,
+				name: t.name
+			}
+		end
+	end
+
+	def res_ranking_manages
+		@ranking_manages.map do |ranking_manage|
+			{
+				rankings: res_ranking_manage(ranking_manage)
+			}
+		end
+	end
+
+	def res_ranking_manage(ranking_manage)
+		ranking_manage.ranking.map do |r|
+			{
+				name: r.team_name
+			}
+		end
 	end
 end
