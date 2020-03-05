@@ -145,7 +145,7 @@ def create_player_record_pitcher(team, year, y_string)
 end
 
 # 初期セットアップ時はfalseにする
-skip = true
+skip = false
 
 unless skip
 	YEARS.each do |year, y_string|
