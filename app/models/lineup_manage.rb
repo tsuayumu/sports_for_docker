@@ -3,6 +3,7 @@ class LineupManage < ActiveRecord::Base
 	belongs_to :user
 	has_many :lineup
 	has_many :lineup_manage_user_comments
+	has_many :lineup_manage_likes
 
 	scope :team, ->(team){ where(team_id: team) }
 	scope :year, ->(year){ where(year: year) }

@@ -1,6 +1,8 @@
 class BattleController < ApplicationController
 	before_action :valid_battle?
 
+	protect_from_forgery :except => [:create]
+
 	def index
 		battle = Battle.new(session[:my_opening_lineup_id], params[:opening_lineup_id])
 		battle.record
