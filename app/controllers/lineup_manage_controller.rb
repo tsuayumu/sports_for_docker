@@ -23,7 +23,8 @@ class LineupManageController < ApplicationController
 		lineup_manage.lineup.each.with_index(1) do |l, i|
 			tweet_text << "#{i}番　#{l.name}\r"
 		end
-		tweet_text << "\r詳しくはこちら\r#{request.url} \r\r"
+		request_url = "http://sporen-memory.com/opening_starting_lineup/#{lineup_manage.team_name_en}/#{lineup_manage.year}"
+		tweet_text << "\r詳しくはこちら\r#{request_url} \r\r"
 		tweet_text << "##{lineup_manage.team_name} ##{lineup_manage.year}開幕スタメン"
 
 		twitter_client.update(tweet_text)

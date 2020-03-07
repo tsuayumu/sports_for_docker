@@ -3,7 +3,7 @@ class RankingManage < ActiveRecord::Base
 	belongs_to :league
 	accepts_nested_attributes_for :ranking
 
-	delegate :name, to: :league, prefix: :league, allow_nil: true
+	delegate :name, :name_en, :year, to: :league, prefix: :league, allow_nil: true
 
 	class << self
 		def create_by(year:, league_id:, ranking:)

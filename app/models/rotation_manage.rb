@@ -6,7 +6,7 @@ class RotationManage < ActiveRecord::Base
   scope :team, ->(team){ where(team_id: team.id) }
   scope :year, ->(year){ where(year: year) } 
   
-  delegate :name, to: :team, prefix: :team, allow_nil: true
+  delegate :name, :name_en, :year, to: :team, prefix: :team, allow_nil: true
 
   class << self
 		def create_by!(team_id:, year:, comment:, rotation:)
