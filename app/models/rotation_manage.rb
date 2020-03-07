@@ -1,13 +1,33 @@
 class RotationManage < ActiveRecord::Base
-  has_many :rotation_comments
+  has_many :rotation_manage_user_comments
   has_many :rotations
   belongs_to :team
-  accepts_nested_attributes_for :rotations
 
   scope :team, ->(team){ where(team_id: team.id) }
   scope :year, ->(year){ where(year: year) } 
   
-  delegate :name, to: :team, prefix: :team, allow_nil: true
+  delegate :name, :name_en, :year, to: :team, prefix: :team, allow_nil: true
+
+  class << self
+		def create_by!(team_id:, year:, comment:, rotation:)
+			transaction do
+				rotation_manage = create!(
+					team_id: team_id,
+					year: year,
+					comment: comment
+				)
+				rotation.each.with_index(1) do |pitcher_id, index|
+					Rotation.create(
+						rotation_manage: rotation_manage,
+						pitcher_id: pitcher_id,
+						order: index
+					)
+				end
+				rotation_manage.reload
+      end
+    end
+  end
+    
 
   def tweet_text(request_url:, line_code:)
 		result = ''

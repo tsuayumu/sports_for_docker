@@ -2,14 +2,32 @@ class LineupManage < ActiveRecord::Base
 	belongs_to :team
 	belongs_to :user
 	has_many :lineup
-	accepts_nested_attributes_for :lineup
+	has_many :lineup_manage_user_comments
 
 	scope :team, ->(team){ where(team_id: team) }
 	scope :year, ->(year){ where(year: year) }
 
-	delegate :name, to: :team, prefix: :team, allow_nil: true
+	delegate :name, :name_en, :year, to: :team, prefix: :team, allow_nil: true
 
 	class << self
+		def create_by!(team_id:, year:, comment:, lineup:)
+			transaction do
+				lineup_manage = create!(
+					team_id: team_id,
+					year: year,
+					comment: comment
+				)
+				lineup.each.with_index(1) do |batter_id, index|
+					Lineup.create(
+						lineup_manage: lineup_manage,
+						batter_id: batter_id,
+						order: index
+					)
+				end
+				lineup_manage.reload
+			end
+		end
+
 		def team_lienups(team, year)
 			team_id = Team.team_id(team)
 			team(team_id).year(year)

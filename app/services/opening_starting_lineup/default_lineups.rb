@@ -142,10 +142,6 @@ class OpeningStartingLineup::DefaultLineups
 		@year = year
 	end
 
-	def lineup
-		lineup_to_id
-	end
-
 	def lineup_player_ids
 		result = []
 		LINEUPS[@team_name.to_sym].each do |player_name|
@@ -157,27 +153,5 @@ class OpeningStartingLineup::DefaultLineups
 			result << player_id if player_id
 		end
 		result
-	end
-
-	private
-
-	def lineup_to_id
-		team = LINEUPS[@team_name.to_sym]
-		team_id = {}
-		team_id[:lineups] = {}
-		9.times do |n|
-			team_id[:lineups].store(n.to_s, { batter_id: name_to_id(team, n) })
-		end
-		team_id
-	end
-
-	def name_to_id(team, order)
-		player = Batter.where(
-				year: @year,
-				team_id: Team.team_id(@team_name)
-			)
-			.where("name like '%#{team[order]}%'").take
-		return nil if player.nil?
-		player.id
 	end
 end
