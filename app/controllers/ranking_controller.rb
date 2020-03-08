@@ -16,6 +16,7 @@ class RankingController < ApplicationController
 		)
 
 		tweet_text = ''
+		tweet_text << "#{ranking_manage.comment}\r\r" if ranking_manage.comment.present?
 		ranking_manage.ranking.each.with_index(1) do |r, i|
 			tweet_text << "#{i}位　#{r.team_name}\r"
 		end
