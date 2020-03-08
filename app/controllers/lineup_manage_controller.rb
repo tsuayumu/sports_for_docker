@@ -101,7 +101,9 @@ class LineupManageController < ApplicationController
 			id: lineup_manage.id,
 			lineups: res_lineups(lineup_manage),
 			comment: lineup_manage.comment,
-			user_comments: res_user_comments(lineup_manage)
+			user_comments: res_user_comments(lineup_manage),
+			like: lineup_manage.like_count.to_i,
+			like_flg: false
 		}
 	end
 

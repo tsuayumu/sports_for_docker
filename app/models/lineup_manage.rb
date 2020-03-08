@@ -3,11 +3,13 @@ class LineupManage < ActiveRecord::Base
 	belongs_to :user
 	has_many :lineup
 	has_many :lineup_manage_user_comments
+	has_one :lineup_manage_like
 
 	scope :team, ->(team){ where(team_id: team) }
 	scope :year, ->(year){ where(year: year) }
 
 	delegate :name, :name_en, :year, to: :team, prefix: :team, allow_nil: true
+	delegate :count, to: :lineup_manage_like, prefix: :like, allow_nil: true
 
 	class << self
 		def create_by!(team_id:, year:, comment:, lineup:)
@@ -32,6 +34,12 @@ class LineupManage < ActiveRecord::Base
 			team_id = Team.team_id(team)
 			team(team_id).year(year)
 		end
+	end
+
+	def like!
+		like = LineupManageLike.find_or_create_by(lineup_manage: self)
+		like.count = like.count + 1
+		like.save!
 	end
 
 	def lineups
