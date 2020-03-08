@@ -17,7 +17,7 @@ TEAM = [
 ]
 
 YEARS = {
-	'2020' => '',
+	'2020' => '19',
 	'2019' => '18',
 	'2018' => '17'
 }
@@ -144,17 +144,12 @@ def create_player_record_pitcher(team, year, y_string)
 	end
 end
 
-# 初期セットアップ時はfalseにする
-skip = false
+YEARS.each do |year, y_string|
+	TEAM.each do |team|
+		create_batter(team, year, y_string)
+		create_player_record_fielder(team, year, y_string)
 
-unless skip
-	YEARS.each do |year, y_string|
-		TEAM.each do |team|
-			create_batter(team, year, y_string)
-			create_player_record_fielder(team, year, y_string)
-
-			create_pitcher(team, year, y_string)
-			create_player_record_pitcher(team, year, y_string)
-		end
+		create_pitcher(team, year, y_string)
+		create_player_record_pitcher(team, year, y_string)
 	end
 end

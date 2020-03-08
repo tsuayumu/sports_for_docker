@@ -34,28 +34,30 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Create Table =="
   system! "bundle exec ridgepole -c config/database.yml -E production --apply -f db/Schemafile"
 
-  puts "\n== Create League and team =="
-  system! "bin/rails runner batch/init.rb"
+  # 初期セットの場合、falseにする
+  skip = true
 
-  puts "\n== Create Batter =="
-  system! "bin/rails runner batch/players.rb"
+  unless skip
+    puts "\n== Create League and team =="
+    system! "bin/rails runner batch/init.rb"
 
-  puts "\n== Update Batter =="
-  system! "bin/rails runner batch/2020/update_batter.rb"
+    puts "\n== Create Batter =="
+    system! "bin/rails runner batch/players.rb"
 
-  puts "\n== Update Pitcher =="
-  system! "bin/rails runner batch/2020/update_pitcher.rb"
+    puts "\n== Update Batter =="
+    system! "bin/rails runner batch/2020/update_batter.rb"
 
-  puts "\n== Update Player =="
-  system! "bin/rails runner batch/2020/update_players.rb"
+    puts "\n== Update Pitcher =="
+    system! "bin/rails runner batch/2020/update_pitcher.rb"
 
-  puts "\n== Precompile =="
-  system! "bin/rails assets:precompile"
+    puts "\n== Update Player =="
+    system! "bin/rails runner batch/2020/update_players.rb"
+  end
 
   puts "\n== Starting application server =="
   if ENV["DOCKER_ENV"]
     system! "bin/rails restart"
   else
-    system! "bin/rails s -p 80"
+    system! "bin/rails s -p 3001"
   end
 end
