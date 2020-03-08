@@ -6,11 +6,12 @@ class RankingManage < ActiveRecord::Base
 	delegate :name, :name_en, :year, to: :league, prefix: :league, allow_nil: true
 
 	class << self
-		def create_by(year:, league_id:, ranking:)
+		def create_by(year:, league_id:, ranking:, comment:)
 			transaction do
 				ranking_manage = create!(
 					year: year,
-					league_id: league_id
+					league_id: league_id,
+					comment: comment
 				)
 				ranking.each.with_index(1) do |team_id, index|
 					Ranking.create!(

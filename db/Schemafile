@@ -154,7 +154,7 @@ add_index "pitchers", ["team_id"], name: "index_pitchers_on_team_id", using: :bt
 
 create_table "ranking_manages", force: true do |t|
   t.integer  "user_id"
-  t.string   "dopester"
+  t.string   "comment"
   t.integer  "ranking_id"
   t.integer  "year",       null: false
   t.integer  "league_id"

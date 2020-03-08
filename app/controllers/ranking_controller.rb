@@ -11,7 +11,8 @@ class RankingController < ApplicationController
 		ranking_manage = RankingManage.create_by(
 			year: params[:year],
 			league_id: params[:league_id],
-			ranking: params[:ranking]
+			ranking: params[:ranking],
+			comment: params[:comment]
 		)
 
 		tweet_text = ''
@@ -19,7 +20,7 @@ class RankingController < ApplicationController
 			tweet_text << "#{i}位　#{r.team_name}\r"
 		end
 		request_url = "http://sports-memory.com/ranking/#{ranking_manage.league_name_en}/#{ranking_manage.year}"
-		tweet_text << "\r詳しくはこちら\r#{request.url} \r\r"
+		tweet_text << "\r詳しくはこちら\r#{request_url} \r\r"
 		tweet_text << "##{ranking_manage.year}#{ranking_manage.league_name}順位予想"
 
 		twitter_client.update(tweet_text)
@@ -69,6 +70,7 @@ class RankingController < ApplicationController
 	def res_ranking_manages
 		@ranking_manages.map do |ranking_manage|
 			{
+				comment: ranking_manage.comment,
 				rankings: res_ranking_manage(ranking_manage)
 			}
 		end
