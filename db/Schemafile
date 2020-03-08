@@ -50,6 +50,13 @@ end
 add_index "lineup_manages", ["team_id"], name: "index_lineup_manages_on_team_id", using: :btree
 add_index "lineup_manages", ["user_id"], name: "index_lineup_manages_on_user_id", using: :btree
 
+create_table "lineup_manage_likes", force: true do |t|
+  t.integer "lineup_manage_id"
+  t.integer "count",       default: 0, null: false
+end
+
+add_index "lineup_manage_likes", ["lineup_manage_id"], name: "index_lineup_manage_likes_on_lineup_manage_id", using: :btree
+
 create_table "rotation_manages", force: true do |t|
   t.integer  "user_id"
   t.integer  "team_id",                null: false

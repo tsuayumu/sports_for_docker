@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'lineup_manage/:team/:year' => 'lineup_manage#index', as: :index_lineup_manage
   post 'lineup_manage' => 'lineup_manage#create', as: :create_lineup_manage
+  post 'lineup_manage_like' => 'lineup_manage_like#update'
   post 'lineup_manage_user_comment' => 'lineup_manage_user_comment#create'
 
   get 'rotation_manage/:team/:year' => 'rotation_manage#index', as: :index_rotation_manage
