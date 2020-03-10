@@ -75,7 +75,7 @@ class RotationManageController < ApplicationController
         name_en: @team.name_en
       },
 			league: {
-				name_en: @team.league.name_en
+				name_en: @team.league&.name_en || 'central'
 			},
       selected_players: @default_rotations.pitcher_ids,
       select_players: res_select_players,

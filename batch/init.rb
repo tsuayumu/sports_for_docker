@@ -58,7 +58,13 @@ def create_team
 			name_en: "#{name_en[n]}",
 			league_id: league
 		)
-	end
+  end
+  
+  Team.create!(
+    name: "侍ジャパン",
+    name_en: "japan",
+    league_id: nil
+  )
 end
 
 create_league
