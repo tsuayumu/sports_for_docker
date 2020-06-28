@@ -26,9 +26,9 @@ class GameHighlightController < ApplicationController
     )
 
     tweet_text = ''
-		tweet_text << "#{highlight.text}\r"
+    tweet_text << "#{highlight.text}\r"
     request_url = "http://sports-memory.com/game_highlight/#{team.name_en}/#{params[:date]}"
-		tweet_text << "\rもっと見る\r#{request_url} \r\r"
+    tweet_text << "\rもっと見る\r#{request_url} \r\r"
     tweet_text << "##{team.name} ##{date.strftime("%-m月%-d日")}の見所"
     
     twitter_client.update(tweet_text) if highlight.text.size >= 8
