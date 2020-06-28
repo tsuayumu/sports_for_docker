@@ -19,7 +19,10 @@ Rails.application.routes.draw do
 
   get 'ranking/:league/:year' => 'ranking#index', as: :index_ranking
   post 'ranking_manage' => 'ranking#create', as: :create_ranking
-  post 'ranking/:league/:year/comment' => 'ranking#create_comment', as: :create_ranking_comment  
+  post 'ranking/:league/:year/comment' => 'ranking#create_comment', as: :create_ranking_comment
+
+  get 'game_highlight/:team/:date' => 'game_highlight#index'
+  post 'game_highlight' => 'game_highlight#create'
 
   resources :users, only: [:new, :create, :edit, :update]
 
