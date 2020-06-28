@@ -1,5 +1,5 @@
 class GameHighlightController < ApplicationController
-	def index
+  def index
     date = Date.parse(params[:date])
     team = Team.team(params[:team])
     @highlights = team.game_highlights.where(date: date)
@@ -45,6 +45,6 @@ class GameHighlightController < ApplicationController
   end
 
   def twitter_client
-		TwitterClient.new
+    TwitterClient.new
   end
 end
