@@ -4,7 +4,7 @@ class GameHighlightController < ApplicationController
     team = Team.team(params[:team])
     @highlights = team.game_highlights.where(date: date)
 
-		render json: {
+    render json: {
       date: date.strftime("%Y/%m/%d"),
       highlight_texts: res_highlight_texts,
       team: {
