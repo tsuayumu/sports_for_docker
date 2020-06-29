@@ -27,7 +27,7 @@ class GameHighlightController < ApplicationController
 
     tweet_text = ''
     tweet_text << "#{highlight.text}\r"
-    request_url = "http://sports-memory.com/game_highlight/#{team.name_en}/#{date.strftime("%Y%m%d")}"
+    request_url = "http://sports-memory.com/game_highlight/#{team.name_en}/#{date.strftime('%Y%m%d')}"
     tweet_text << "\rもっと見る\r#{request_url} \r\r"
     tweet_text << "##{team.name} ##{date.strftime("%-m月%-d日")}の見所"
     
