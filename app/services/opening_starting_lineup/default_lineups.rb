@@ -6,11 +6,11 @@ class OpeningStartingLineup::DefaultLineups
 			"坂本　勇人",
 			"丸",
 			"岡本　和真",
-			"大城　卓三",
+			"パーラ",
 			"亀井　善行",
-			"山下　航汰",
+			"中島　宏之",
+			"大城　卓三",
 			"投手",
-			"重信　慎之介"
 		],
 		tigers: [
 			"木浪　聖也",

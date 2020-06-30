@@ -35,6 +35,23 @@ create_table "leagues", force: true do |t|
   t.integer  "status",     default: 0, null: false
 end
 
+create_table "daily_lineup_manages", force: true do |t|
+  t.integer  "team_id",                null: false
+  t.date  "date",                   null: false
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "daily_lineup_manages", ["team_id"], name: "index_daily_lineup_manages_on_team_id", using: :btree
+
+create_table "daily_lineups", force: true do |t|
+  t.integer "batter_id"
+  t.integer "daily_lineup_manage_id"
+  t.integer "order",            null: false
+end
+
+add_index "daily_lineups", ["daily_lineup_manage_id"], name: "index_daily_lineups_on_daily_lineup_manage_id", using: :btree
+
 create_table "lineup_manages", force: true do |t|
   t.integer  "user_id"
   t.integer  "team_id",                null: false
