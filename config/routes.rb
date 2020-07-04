@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get 'game_highlight/:team/:date' => 'game_highlight#index'
   post 'game_highlight' => 'game_highlight#create'
 
+  get 'game_comment/:team/:date' => 'game_comment#index'
+  post 'game_comment' => 'game_comment#create'
+
   resources :users, only: [:new, :create, :edit, :update]
 
   namespace :user do
