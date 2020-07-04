@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
 	has_many :rotation_manages
 	has_many :rankings
 	has_many :game_highlights
+	has_many :game_comments
 
 	scope :team_id, ->(name_en){ find_by(name_en: name_en).id}
 	scope :team, ->(name_en){ find_by(name_en: name_en) }

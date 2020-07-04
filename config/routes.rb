@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'lineup_manage_like' => 'lineup_manage_like#update'
   post 'lineup_manage_user_comment' => 'lineup_manage_user_comment#create'
 
+  get 'daily_lineup_manage/:team/:date' => 'daily_lineup_manage#index'
   post 'daily_lineup_manage' => 'daily_lineup_manage#create'
 
   get 'rotation_manage/:team/:year' => 'rotation_manage#index', as: :index_rotation_manage
@@ -25,6 +26,9 @@ Rails.application.routes.draw do
 
   get 'game_highlight/:team/:date' => 'game_highlight#index'
   post 'game_highlight' => 'game_highlight#create'
+
+  get 'game_comment/:team/:date' => 'game_comment#index'
+  post 'game_comment' => 'game_comment#create'
 
   resources :users, only: [:new, :create, :edit, :update]
 
