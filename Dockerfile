@@ -1,8 +1,9 @@
-FROM gcr.io/test-25245-264913/ruby@sha256:510b9962c734ec3c0886bcef0fc7d86b993435206181a54e46dd4e7dbe1af76b
+FROM gcr.io/hale-sentry-267012/ruby@sha256:b9c2ec487718d00f592675c95867fe6d38e994b561e74efd60212c58a11da130
 
 WORKDIR /app/sports
 COPY ./Gemfile* ./
 RUN bundle install --deployment --without development test
+RUN bundle exec whenever --update-crontab
 COPY . /app/sports
 RUN mkdir -p tmp/pids
 
