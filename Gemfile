@@ -63,3 +63,5 @@ gem 'slim-rails'
 gem 'sass-rails'
 
 gem 'twitter'
+
+gem 'whenever', :require => false
