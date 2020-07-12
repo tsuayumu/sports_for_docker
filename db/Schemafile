@@ -234,3 +234,30 @@ end
 
 add_index "game_comments", ["team_id"], name: "index_game_comments_on_team_id", using: :btree
 add_index "game_comments", ["team_id", "date"], name: "index_game_comments_on_team_id_date"
+
+create_table "games", force: true do |t|
+  t.integer  "team_id"
+  t.date "date"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "games", ["team_id"], name: "index_games_on_team_id", using: :btree
+add_index "games", ["team_id", "date"], name: "index_games_on_team_id_date"
+
+create_table "game_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "one_inning_at"
+  t.datetime "two_inning_at"
+  t.datetime "three_inning_at"
+  t.datetime "four_inning_at"
+  t.datetime "five_inning_at"
+  t.datetime "six_inning_at"
+  t.datetime "seven_inning_at"
+  t.datetime "eight_inning_at"
+  t.datetime "nine_inning_at"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_innings", ["game_id"], name: "index_game_innings_on_game_id", using: :btree
