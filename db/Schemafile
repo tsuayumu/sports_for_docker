@@ -437,7 +437,6 @@ add_index "game_top_ten_innings", ["game_id"], name: "index_game_top_ten_innings
 
 create_table "game_bottom_ten_innings", force: true do |t|
   t.integer "game_id"
-  t.datetime "inning_at"
   t.string "text"
   t.datetime "created_at"
   t.datetime "updated_at"
