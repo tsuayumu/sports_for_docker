@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post 'ranking_manage' => 'ranking#create', as: :create_ranking
   post 'ranking/:league/:year/comment' => 'ranking#create_comment', as: :create_ranking_comment
 
+  get 'game/:team/:date' => 'game#index'
+
   get 'game_highlight/:team/:date' => 'game_highlight#index'
   post 'game_highlight' => 'game_highlight#create'
 
