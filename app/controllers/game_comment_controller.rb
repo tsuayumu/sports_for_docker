@@ -32,14 +32,20 @@ class GameCommentController < ApplicationController
     
     twitter_client.update(tweet_text) if game_comment.text.size >= 8
 
-    render json: { game_comment_text: game_comment.text }
+    render json: {
+      text: game_comment.text,
+      comment_at: game_comment.created_at
+    }
   end
   
   private
 
   def res_game_comment_texts
     @game_comments.map do |comment|
-      comment.text
+      {
+        text: comment.text,
+        comment_at: comment.created_at
+      }
     end
   end
 

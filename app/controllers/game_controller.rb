@@ -9,7 +9,6 @@ class GameController < ApplicationController
     GameInningService.new(@game).update
 
     render json: {
-      date: @date.strftime("%Y/%m/%d"),
       inning_texts: inning_texts
     }
   end
@@ -21,14 +20,23 @@ class GameController < ApplicationController
     10.times.each do |inning|
       ['top', 'bottom'].each do |t_or_b|
         game_inning = @game.send("game_#{t_or_b}_#{IntegerConvertAlphabet.convert(inning+1)}_inning")
-        if game_inning.text.present?
+        if game_inning&.text.present?
           result << {
-            text: game_inning.text,
+            inning: "#{inning+1}回#{top_or_bottom_string(t_or_b)}",
+            text: game_inning.text.gsub(/\\n/, "\n"),
             updated_at: game_inning.updated_at
           }
         end
       end
     end
     result
+  end
+
+  def top_or_bottom_string(t_or_b)
+    if t_or_b == 'top'
+      '表'
+    else
+      '裏'
+    end
   end
 end

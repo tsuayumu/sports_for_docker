@@ -116,7 +116,7 @@ class GameInningService
       inning_text_array = inning_text_array.select do |inning_text|
         inning_text[:result].present? && inning_text[:result] != "……"
       end
-      inning_text_array.map{|inning_text| "#{inning_text[:batter]} #{inning_text[:result]}"}.join('\n')
+      inning_text_array.map{|inning_text| "#{inning_text[:batter]}  #{inning_text[:result]}"}.join("\n")
     end
   end
 end
