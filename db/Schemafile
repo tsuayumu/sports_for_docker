@@ -245,19 +245,202 @@ end
 add_index "games", ["team_id"], name: "index_games_on_team_id", using: :btree
 add_index "games", ["team_id", "date"], name: "index_games_on_team_id_date"
 
-create_table "game_innings", force: true do |t|
+create_table "game_top_one_innings", force: true do |t|
   t.integer "game_id"
-  t.datetime "one_inning_at"
-  t.datetime "two_inning_at"
-  t.datetime "three_inning_at"
-  t.datetime "four_inning_at"
-  t.datetime "five_inning_at"
-  t.datetime "six_inning_at"
-  t.datetime "seven_inning_at"
-  t.datetime "eight_inning_at"
-  t.datetime "nine_inning_at"
+  t.datetime "inning_at"
+  t.string "text"
   t.datetime "created_at"
   t.datetime "updated_at"
 end
 
-add_index "game_innings", ["game_id"], name: "index_game_innings_on_game_id", using: :btree
+add_index "game_top_one_innings", ["game_id"], name: "index_game_top_one_innings_on_game_id", using: :btree
+
+create_table "game_bottom_one_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_one_innings", ["game_id"], name: "index_game_bottom_one_innings_on_game_id", using: :btree
+
+create_table "game_top_two_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_two_innings", ["game_id"], name: "index_game_top_two_innings_on_game_id", using: :btree
+
+create_table "game_bottom_two_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_two_innings", ["game_id"], name: "index_game_bottom_two_innings_on_game_id", using: :btree
+
+create_table "game_top_three_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_three_innings", ["game_id"], name: "index_game_top_three_innings_on_game_id", using: :btree
+
+create_table "game_bottom_three_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_three_innings", ["game_id"], name: "index_game_bottom_three_innings_on_game_id", using: :btree
+
+create_table "game_top_four_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_four_innings", ["game_id"], name: "index_game_top_four_innings_on_game_id", using: :btree
+
+create_table "game_bottom_four_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_four_innings", ["game_id"], name: "index_game_bottom_four_innings_on_game_id", using: :btree
+
+create_table "game_top_five_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_five_innings", ["game_id"], name: "index_game_top_five_innings_on_game_id", using: :btree
+
+create_table "game_bottom_five_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_five_innings", ["game_id"], name: "index_game_bottom_five_innings_on_game_id", using: :btree
+
+create_table "game_top_six_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_six_innings", ["game_id"], name: "index_game_top_six_innings_on_game_id", using: :btree
+
+create_table "game_bottom_six_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_six_innings", ["game_id"], name: "index_game_bottom_six_innings_on_game_id", using: :btree
+
+create_table "game_top_seven_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_seven_innings", ["game_id"], name: "index_game_top_seven_innings_on_game_id", using: :btree
+
+create_table "game_bottom_seven_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_seven_innings", ["game_id"], name: "index_game_bottom_seven_innings_on_game_id", using: :btree
+
+create_table "game_top_eight_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_eight_innings", ["game_id"], name: "index_game_top_eight_innings_on_game_id", using: :btree
+
+create_table "game_bottom_eight_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_eight_innings", ["game_id"], name: "index_game_bottom_eight_innings_on_game_id", using: :btree
+
+create_table "game_top_nine_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_nine_innings", ["game_id"], name: "index_game_top_nine_innings_on_game_id", using: :btree
+
+create_table "game_bottom_nine_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_nine_innings", ["game_id"], name: "index_game_bottom_nine_innings_on_game_id", using: :btree
+
+create_table "game_top_ten_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_top_ten_innings", ["game_id"], name: "index_game_top_ten_innings_on_game_id", using: :btree
+
+create_table "game_bottom_ten_innings", force: true do |t|
+  t.integer "game_id"
+  t.datetime "inning_at"
+  t.string "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "game_bottom_ten_innings", ["game_id"], name: "index_game_bottom_ten_innings_on_game_id", using: :btree
