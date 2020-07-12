@@ -1,3 +1,5 @@
+require 'game_inning_service'
+
 class GameController < ApplicationController
   def index
     @game = Game.find_or_create_by!(

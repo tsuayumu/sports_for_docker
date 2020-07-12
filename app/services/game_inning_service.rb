@@ -1,9 +1,13 @@
+require 'nokogiri'
+require 'open-uri'
+require 'game_inning_service'
+
 class GameInningService
   def initialize(game)
     @game = game
   end
 
-  def update    
+  def update
     game_count_array.each do |game_count|
       charset = nil
       begin
@@ -71,9 +75,9 @@ class GameInningService
   end
 
   def league_name
-    if @game.team.central?
+    if @game.team.league.central?
       'c'
-    elsif @game.team.pacific?
+    elsif @game.team.league.pacific?
       'p'
     end
   end
@@ -113,27 +117,6 @@ class GameInningService
         inning_text[:result].present? && inning_text[:result] != "……"
       end
       inning_text_array.map{|inning_text| "#{inning_text[:batter]} #{inning_text[:result]}"}.join('\n')
-    end
-  end
-end
-
-class IntegerConvertAlphabet
-  CONVERT_ALPHA = {
-    1 => 'one',
-    2 => 'two',
-    3 => 'three',
-    4 => 'four',
-    5 => 'five',
-    6 => 'six',
-    7 => 'seven',
-    8 => 'eight',
-    9 => 'nine',
-    10 => 'ten'
-  }
-
-  class << self
-    def convert(int)
-      CONVERT_ALPHA[int]
     end
   end
 end
