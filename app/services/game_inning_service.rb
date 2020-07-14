@@ -8,10 +8,23 @@ class GameInningService
   end
 
   def update
-    game_count_array.each do |game_count|
+    charset = nil
+    html = open(game_list_url) do |f|
+      charset = f.charset
+      f.read
+    end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    game_detail_urls = []
+    doc.css(".nScore").each do |link|
+      game_detail_urls << link.css("a")[0][:href]
+    end
+
+    game_detail_urls.reverse! if @game.team.league.pacific?
+
+    game_detail_urls.each do |game_detail_url|
       charset = nil
       begin
-        html = open(scraping_url(game_count)) do |f|
+        html = open("https://www.nikkansports.com#{game_detail_url}") do |f|
           charset = f.charset
           f.read
         end
@@ -46,8 +59,8 @@ class GameInningService
 
   private
 
-  def scraping_url(game_count)
-    "https://www.nikkansports.com/baseball/professional/score/2020/#{league_name}l#{@game.date.strftime("%Y%m%d")}#{game_count}.html"
+  def game_list_url
+    "https://www.nikkansports.com/baseball/professional/score/2020/pf-score-#{@game.date.strftime("%Y%m%d")}.html"
   end
 
   def team_name
@@ -64,22 +77,6 @@ class GameInningService
     result = '楽天' if @game.team.eagles?
     result = '西武' if @game.team.lions?
     result
-  end
-
-  def game_count_array
-    if @game.team.league.central?
-      [12, 13, 14, 11, 10, 15, 16, 17]
-    elsif @game.team.league.pacific?
-      [15, 16, 17, 14, 18, 11, 12, 13]
-    end
-  end
-
-  def league_name
-    if @game.team.league.central?
-      'c'
-    elsif @game.team.league.pacific?
-      'p'
-    end
   end
 
   class InningText
