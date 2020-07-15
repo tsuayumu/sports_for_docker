@@ -51,16 +51,15 @@ class GameInningService
       [:top, :bottom].each do |top_or_bottom|
         10.times do |int|
           inning_model = "Game#{top_or_bottom.to_s.capitalize}#{IntegerConvertAlphabet.convert(int+1).capitalize}Inning".constantize
-          inning = inning_model.find_or_create_by(
-            game: @game
-          )
-          inning.update(
-            text: InningText.new(
-              doc: doc,
-              inning_sym: "#{IntegerConvertAlphabet.convert(int+1)}_inning".to_sym,
-              top_or_bottom: top_or_bottom
-            ).text
-          )
+          text = InningText.new(
+            doc: doc,
+            inning_sym: "#{IntegerConvertAlphabet.convert(int+1)}_inning".to_sym,
+            top_or_bottom: top_or_bottom
+          ).text
+          if text.present?
+            inning = inning_model.find_or_create_by(game: @game)
+            inning.update(text: text)
+          end
         end
       end
 
