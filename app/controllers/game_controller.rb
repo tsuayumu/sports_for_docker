@@ -24,7 +24,7 @@ class GameController < ApplicationController
           result << {
             inning: "#{inning+1}回#{top_or_bottom_string(t_or_b)}",
             text: game_inning.text.gsub(/\\n/, "\n"),
-            updated_at: game_inning.updated_at
+            updated_at: game_inning.created_at
           }
         end
       end
