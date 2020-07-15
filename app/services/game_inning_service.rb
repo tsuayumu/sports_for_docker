@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'open-uri'
-require 'game_inning_service'
 
 class GameInningService
   def initialize(game)
@@ -36,6 +35,18 @@ class GameInningService
       # cardTitle
       # ex "巨人 対 ヤクルト"
       next unless doc.xpath('//*[(@id = "cardTitle")]').text.include?(team_name)
+
+      unless DailyLineupManage.where(team: @game.team, date: @game.date).present?
+        names = StartingMember.new(
+          doc: doc,
+          team_name: team_name
+        ).names
+        DailyLineupManage.create_by_prefix_match_name!(
+          team_id: @game.team_id,
+          date: @game.date,
+          names: names
+        )
+      end      
 
       [:top, :bottom].each do |top_or_bottom|
         10.times do |int|
@@ -79,6 +90,36 @@ class GameInningService
     result
   end
 
+  class StartingMember
+    SCRAPING_HASH = {
+      position: 0,
+      batter: 1
+    }
+
+    def initialize(doc:, team_name:)
+      @doc = doc
+      @team_name = team_name
+    end
+
+    def names
+      result = []
+      @doc.xpath('//table[(@class = "batter")]')[top_or_bottom].xpath('tr').each do |tr|
+        if tr.xpath('td')[SCRAPING_HASH[:position]]&.text&.include?("(")
+          result << tr.xpath('td')[SCRAPING_HASH[:batter]]&.text
+        end
+      end
+      result
+    end
+
+    private
+
+    def top_or_bottom
+      @doc.xpath('//caption').each_with_index do |caption, index|
+        return index if caption.text == "【#{@team_name}】"
+      end
+    end
+  end
+
   class InningText
     SCRAPING_HASH = {
       top: 0,
@@ -103,17 +144,17 @@ class GameInningService
     end
 
     def text
-      inning_text_array = []
+      inning_texts = []
       @doc.xpath('//table[(@class = "batter")]')[SCRAPING_HASH[@top_or_bottom]].xpath('tr').each do |tr|
-        inning_text_array << {
+        inning_texts << {
           batter: tr.xpath('td')[SCRAPING_HASH[:batter]]&.text, # バッター
           result: tr.xpath('td')[SCRAPING_HASH[@inning_sym]]&.text # 打席結果
         }
       end
-      inning_text_array = inning_text_array.select do |inning_text|
+      inning_texts = inning_texts.select do |inning_text|
         inning_text[:result].present? && inning_text[:result] != "……"
       end
-      inning_text_array.map{|inning_text| "#{inning_text[:batter]}  #{inning_text[:result]}"}.join("\n")
+      inning_texts.map{|inning_text| "#{inning_text[:batter]}  #{inning_text[:result]}"}.join("\n")
     end
   end
 end
