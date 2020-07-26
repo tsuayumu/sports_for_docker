@@ -20,7 +20,7 @@ class RankingController < ApplicationController
 		ranking_manage.ranking.each.with_index(1) do |r, i|
 			tweet_text << "#{i}位　#{r.team_name}\r"
 		end
-		request_url = "http://sports-memory.com/ranking/#{ranking_manage.league_name_en}/#{ranking_manage.year}"
+		request_url = "https://sports-memory.com/ranking/#{ranking_manage.league_name_en}/#{ranking_manage.year}"
 		tweet_text << "\r詳しくはこちら\r#{request_url} \r\r"
 		tweet_text << "##{ranking_manage.year}#{ranking_manage.league_name}順位予想"
 

@@ -36,7 +36,7 @@ class DailyLineupManageController < ApplicationController
     daily_lineup_manage.daily_lineups.each.with_index(1) do |l, i|  
       tweet_text << "#{i}番　#{l.name}\r"
     end
-    request_url = "http://sports-memory.com/game/#{team.name_en}/#{date.strftime('%Y%m%d')}"
+    request_url = "https://sports-memory.com/game/#{team.name_en}/#{date.strftime('%Y%m%d')}"
     tweet_text << "\r詳しくはこちら\r#{request_url} \r\r"
     tweet_text << "##{team.name} ##{date.strftime("%-m月%-d日")}のスタメン"
 

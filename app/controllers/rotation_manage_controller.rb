@@ -29,7 +29,7 @@ class RotationManageController < ApplicationController
       end
       tweet_text << "#{l.name}\r"
     end
-    request_url = "http://sports-memory.com/opening_rotation/#{rotation_manage.team_name_en}/#{rotation_manage.year}"
+    request_url = "https://sports-memory.com/opening_rotation/#{rotation_manage.team_name_en}/#{rotation_manage.year}"
 		tweet_text << "\r詳しくはこちら\r#{request_url} \r\r"
 		tweet_text << "##{rotation_manage.team_name} ##{rotation_manage.year}開幕ローテーション"
 
