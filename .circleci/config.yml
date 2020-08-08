@@ -1,8 +1,33 @@
 version: 2.1
 jobs:
-  build:
+  create_image:
     docker:
-      - image: circleci/ruby:2.6.5
+      - image: google/cloud-sdk
     steps:
+      - run:
+          name: Gcloud Config
+          command: |
+            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+      - run:
+          name: GCloud Auth configure-docker
+          command: |
+            gcloud auth configure-docker --quiet --project ${GOOGLE_PROJECT_ID}
+      - setup_remote_docker
       - checkout
-      - run: echo "hello world"
+      - run:
+          name: Docker Build
+          command: |
+            docker build . -t gcr.io/${GOOGLE_PROJECT_ID}/gcp-rails_sports-rails_backend:${CIRCLE_SHA1}
+      - run:
+          name: Docker Push
+          command: |
+            docker push gcr.io/${GOOGLE_PROJECT_ID}/gcp-rails_sports-rails_backend:${CIRCLE_SHA1}
+workflows:
+  build:
+    jobs:
+      - create_image:
+          filters:
+            branches:
+              only: master
