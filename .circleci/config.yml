@@ -1,9 +1,8 @@
 version: 2.1
 jobs:
-  executors:
+  gcloud_config:
     docker:
       - image: google/cloud-sdk
-  gcloud_config:
     steps:
       - run: |
           echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
