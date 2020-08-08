@@ -1,8 +1,13 @@
 version: 2.1
 jobs:
-  build:
+  executors:
     docker:
-      - image: circleci/ruby:2.6.5
+      - image: google/cloud-sdk
+  gcloud_config:
     steps:
-      - checkout
-      - run: echo "test hello world"
+      - run:
+        name: Gcloud Config
+        command: |
+          echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
