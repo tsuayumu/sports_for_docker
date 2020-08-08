@@ -13,7 +13,6 @@ jobs:
       - run:
           name: GCloud Auth configure-docker
           command: |
-            mkdir -p "$HOME/.docker"
             gcloud auth configure-docker --quiet --project ${GOOGLE_PROJECT_ID}
       - setup_remote_docker
       - checkout
