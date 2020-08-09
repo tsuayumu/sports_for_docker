@@ -19,11 +19,11 @@ jobs:
       - run:
           name: Docker Build
           command: |
-            docker build . -t gcr.io/${GOOGLE_PROJECT_ID}/gcp-rails_sports-rails_backend:${CIRCLE_SHA1}
+            docker build . -t gcr.io/${GOOGLE_PROJECT_ID}/rails-app:${CIRCLE_SHA1}
       - run:
           name: Docker Push
           command: |
-            docker push gcr.io/${GOOGLE_PROJECT_ID}/gcp-rails_sports-rails_backend:${CIRCLE_SHA1}
+            docker push gcr.io/${GOOGLE_PROJECT_ID}/rails-app:${CIRCLE_SHA1}
 workflows:
   build:
     jobs:
