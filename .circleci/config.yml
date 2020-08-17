@@ -19,11 +19,11 @@ jobs:
       - run:
           name: Docker Build
           command: |
-            docker build . -t gcr.io/${GOOGLE_PROJECT_ID}/backend_sports:${CIRCLE_SHA1}
+            docker build . -t gcr.io/${GOOGLE_PROJECT_ID}/backend-sports:${CIRCLE_SHA1}
       - run:
           name: Docker Push
           command: |
-            docker push gcr.io/${GOOGLE_PROJECT_ID}/backend_sports:${CIRCLE_SHA1}
+            docker push gcr.io/${GOOGLE_PROJECT_ID}/backend-sports:${CIRCLE_SHA1}
   # build_pull_request:
   #   docker:
   #     - image: google/cloud-sdk
