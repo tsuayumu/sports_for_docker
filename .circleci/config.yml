@@ -24,32 +24,32 @@ jobs:
           name: Docker Push
           command: |
             docker push gcr.io/${GOOGLE_PROJECT_ID}/backend_sports:${CIRCLE_SHA1}
-  build_pull_request:
-    docker:
-      - image: google/cloud-sdk
-    steps:
-      - run:
-          name: install ruby
-          command: |
-            apt-get -y install ruby
-      - gcloud_config
-      - run:
-          name: git clone
-          command: |
-            mkdir ~/.ssh/
-            echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-            git clone https://${GITHUB_API_TOKEN}:x-oauth-basic@github.com/tsuayumu/infra_sports.git
-      - run:
-          name: git config
-          command: |
-            git config --global user.email "t.ayu.1605@gmail.com"
-            git config --global user.name "tsuayumu"
-      - run:
-          name: build pull request
-          working_directory: ~/project/infra_sports
-          command: |
-            bin/newest_manifest
-            bin/build_pull_request
+  # build_pull_request:
+  #   docker:
+  #     - image: google/cloud-sdk
+  #   steps:
+  #     - run:
+  #         name: install ruby
+  #         command: |
+  #           apt-get -y install ruby
+  #     - gcloud_config
+  #     - run:
+  #         name: git clone
+  #         command: |
+  #           mkdir ~/.ssh/
+  #           echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+  #           git clone https://${GITHUB_API_TOKEN}:x-oauth-basic@github.com/tsuayumu/infra_sports.git
+  #     - run:
+  #         name: git config
+  #         command: |
+  #           git config --global user.email "t.ayu.1605@gmail.com"
+  #           git config --global user.name "tsuayumu"
+  #     - run:
+  #         name: build pull request
+  #         working_directory: ~/project/infra_sports
+  #         command: |
+  #           bin/newest_manifest
+  #           bin/build_pull_request
 workflows:
   build:
     jobs:
@@ -57,4 +57,4 @@ workflows:
           filters:
             branches:
               only: master
-      - build_pull_request
+      # - build_pull_request
