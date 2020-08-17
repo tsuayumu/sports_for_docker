@@ -62,8 +62,8 @@ workflows:
             branches:
               only: master
       - build_pull_request:
-        filters:
-          branches:
-            only: master
-        requires:
-          - create_image
+          filters:
+            branches:
+              only: master
+          requires:
+            - create_image
