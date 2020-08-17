@@ -52,8 +52,8 @@ jobs:
           name: build pull request
           working_directory: ~/project/infra_sports
           command: |
-            bin/newest_manifest
-            bin/build_pull_request
+            ruby bin/newest_manifest
+            ruby bin/build_pull_request
 workflows:
   build:
     jobs:
