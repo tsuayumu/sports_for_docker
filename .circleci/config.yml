@@ -1,8 +1,6 @@
 version: 2.1
-jobs:
-  create_image:
-    docker:
-      - image: google/cloud-sdk
+commands:
+  gcloud_config:
     steps:
       - run:
           name: Gcloud Config
@@ -14,6 +12,12 @@ jobs:
           name: GCloud Auth configure-docker
           command: |
             gcloud auth configure-docker --quiet --project ${GOOGLE_PROJECT_ID}
+jobs:
+  create_image:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - gcloud_config
       - setup_remote_docker
       - checkout
       - run:
