@@ -2,35 +2,39 @@ require 'nokogiri'
 require 'open-uri'
 
 class ScrapeBatterRecord
+  SCRAPE_DOMAIN = "https://npb.jp"
+  private_constant :SCRAPE_DOMAIN
+
   def initialize(batter_name)
     @batter_name = batter_name
   end
 
   # [
   #   { year: 2018, match: 1, win: 2,・・・}
-  #   { year: 2019, win: 1, lose: 2,・・・}
+  #   { year: 2019, match: 1, win: 2,・・・}
   #   ・・・
   # ]
   def all_year_records
-    batter_name_search_url = URI.encode("https://npb.jp/bis/players/search/result?search_keyword=#{@batter_name}&active_flg=")
+    batter_record_path = scrape_batter_record_path_by_name
+    record_doc = scrape_batter_record(batter_record_path)
+    parse_record_doc(record_doc)
+  end
 
-    charset = nil
-    html = open(batter_name_search_url) do |f|
-      charset = f.charset
-      f.read
-    end
-    doc = Nokogiri::HTML.parse(html, nil, charset)
+  private
+
+  def scrape_batter_record_path_by_name
+    batter_name_search_url = "#{SCRAPE_DOMAIN}/bis/players/search/result?search_keyword=#{@batter_name}&active_flg="
+    search_doc = scrape(batter_name_search_url)
     # /bis/players/31935132.html
-    batter_record_path = doc.css("a.player_unit_1")[0][:href]
+    search_doc.css("a.player_unit_1")[0][:href]
+  end
 
-    batter_record_url = URI.encode("https://npb.jp#{batter_record_path}")
-    charset = nil
-    html = open(batter_record_url) do |f|
-      charset = f.charset
-      f.read
-    end
-    doc = Nokogiri::HTML.parse(html, nil, charset)
+  def scrape_batter_record(batter_record_path)
+    batter_record_url = "#{SCRAPE_DOMAIN}#{batter_record_path}"
+    scrape(batter_record_url)
+  end
 
+  def parse_record_doc(record_doc)
     # 0 年度
     # 1 チーム
     # 2 登板
@@ -39,9 +43,9 @@ class ScrapeBatterRecord
     # 5 セーブ
     # 7 ホールドポイント
     # 24 防御率
-    res = []
-    doc.css("div#stats_p").css("tr.registerStats").each do |year_record| 
-      res << {
+    result = []
+    record_doc.css("div#stats_p").css("tr.registerStats").each do |year_record|
+      result << {
         year: year_record.css("td")[0].text.gsub(/[^0-9]/,""),
         match: year_record.css("td")[2].text,
         win: year_record.css("td")[3].text,
@@ -51,7 +55,15 @@ class ScrapeBatterRecord
         era: year_record.css("td")[24].text.gsub(/[^0-9.]/,"")
       }
     end
+    result
+  end
 
-    res
+  def scrape(url)
+    charset = nil
+    html = open(URI.encode(url)) do |f|
+      charset = f.charset
+      f.read
+    end
+    Nokogiri::HTML.parse(html, nil, charset)
   end
 end
