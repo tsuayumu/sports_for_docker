@@ -31,7 +31,8 @@ class ScrapeBatterRecord
 
   def scrape_batter_record(batter_record_path)
     batter_record_url = "#{SCRAPE_DOMAIN}#{batter_record_path}"
-    scrape(batter_record_url)
+    record_doc = scrape(batter_record_url)
+    parse_record_doc(record_doc)
   end
 
   def parse_record_doc(record_doc)
