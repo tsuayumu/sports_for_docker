@@ -1,6 +1,12 @@
 require 'twitter_client'
 
 class LineupManageController < ApplicationController
+
+	rescue_from LineupManage::AlreadyRegisteredError do |e|
+		render json: {
+			error_message: "すでに登録済みです"
+		}
+	end
 	def index
 		@team = Team.team(params[:team])
 		@year = params[:year]
