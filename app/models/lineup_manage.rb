@@ -19,13 +19,19 @@ class LineupManage < ActiveRecord::Base
 					year: year,
 					comment: comment
 				)
+
+				# 重複する打順を検査するため（SQL1つで書けそう）
+				already_registered_count = 0
 				lineup.each.with_index(1) do |batter_id, index|
+					already_registered_count += 1 if Lineup.where(batter_id: batter_id, order: index).present?
 					Lineup.create(
 						lineup_manage: lineup_manage,
 						batter_id: batter_id,
 						order: index
 					)
 				end
+				raise AlreadyRegisteredError if already_registered_count == 9
+
 				lineup_manage.reload
 			end
 		end
@@ -56,4 +62,6 @@ class LineupManage < ActiveRecord::Base
 		result << "##{team_name} ##{year}開幕スタメン"
 		result
 	end
+
+	class AlreadyRegisteredError < StandardError; end
 end
