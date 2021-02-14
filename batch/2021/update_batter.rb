@@ -5,6 +5,7 @@ Batter.find_or_create_by(name: "スモーク", year: 2021, team_id: 1)
 Batter.find_or_create_by(name: "テームズ", year: 2021, team_id: 1)
 Pitcher.find_or_create_by(name: "平内　龍太", year: 2021, team_id: 1)
 Pitcher.find_or_create_by(name: "伊藤　優輔", year: 2021, team_id: 1)
+Batter.find_or_create_by(name: "秋広　優人", year: 2021, team_id: 1)
 
 # 阪神
 Batter.find_or_create_by(name: "ロハスJr", year: 2021, team_id: 2)
