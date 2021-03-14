@@ -4,10 +4,24 @@ def twitter_client
   TwitterClient.new
 end
 
-VirtualCurrency.find_each do |v|
-  search_name = "##{v.name}"
-  search_result = twitter_client.search(search_name, count: 100)
-  tweet_num_per_hour = search_result.attrs[:statuses].select{|sr| sr[:created_at].to_time > 1.hours.ago }.count
+add_search_words = ["", "仮想通貨", "買", "売"]
 
-  v.update!(tweet_num_per_hour: tweet_num_per_hour)
+VirtualCurrency.find_each do |v|
+  add_search_words.each do |add_search_word|
+    search_word = "##{v.name} #{add_search_word}"
+    search_result = twitter_client.search(search_word, count: 100)
+
+    tweet_word = VirtualCurrencyTweetWord.find_or_create_by!(
+      virtual_currency: v,
+      word: add_search_word
+    )
+
+    search_result.attrs[:statuses].each do |tweet|
+      VirtualCurrencyTweet.create!(
+        twitter_user_id: tweet[:user][:id],
+        text: tweet[:text],
+        tweeted_at: tweet[:created_at]
+      )
+    end
+  end
 end
