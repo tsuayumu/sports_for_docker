@@ -12,6 +12,7 @@ class VirtualCurrencyController < ApplicationController
   def res_virtual_currencys
     VirtualCurrency.all.map do |v|
       {
+        id: v.id,
         name: v.name,
         tweet_infos: res_tweet_infos(v)
       }
@@ -21,6 +22,7 @@ class VirtualCurrencyController < ApplicationController
   def res_tweet_infos(virtual_currency)
     virtual_currency.virtual_currency_tweet_words.map do |tw|
       {
+        id: tw.id,
         word: tw.word,
         per_day: res_per_day(tw),
         count: tw.virtual_currency_tweets.size

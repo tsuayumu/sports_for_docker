@@ -46,5 +46,6 @@ Rails.application.routes.draw do
   post 'session' => 'sessions#create', as: :session
   delete 'session' => 'sessions#destroy'
 
-  resources :virtual_currency, only: [:index, :show]
+  resources :virtual_currency, only: [:index]
+  resources :virtual_currency_tweet_word, only: [:show]
 end
