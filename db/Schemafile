@@ -444,7 +444,7 @@ end
 
 add_index "game_bottom_ten_innings", ["game_id"], name: "index_game_bottom_ten_innings_on_game_id", using: :btree
 
-create_table "virtual_currency", force: true do |t|
+create_table "virtual_currencies", force: true do |t|
   t.string "name"
   t.integer "tweet_num_per_hour"
   t.datetime "created_at"
