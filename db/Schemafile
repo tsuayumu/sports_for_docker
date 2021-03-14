@@ -446,7 +446,25 @@ add_index "game_bottom_ten_innings", ["game_id"], name: "index_game_bottom_ten_i
 
 create_table "virtual_currencies", force: true do |t|
   t.string "name"
-  t.integer "tweet_num_per_hour"
   t.datetime "created_at"
   t.datetime "updated_at"
 end
+
+create_table "virtual_currency_tweet_words", force: true do |t|
+  t.integer "virtual_currency_id"
+  t.string "word"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "virtual_currency_tweet_words", ["virtual_currency_id"], name: "index_virtual_currency_tweet_words_on_virtual_currency_id", using: :btree
+
+create_table "virtual_currency_tweets", force: true do |t|
+  t.integer "virtual_currency_search_word_id"
+  t.integer "twitter_user_id"
+  t.text "text"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "virtual_currency_tweets", ["virtual_currency_search_word_id"], name: "index_virtual_currency_tweets_on_virtual_currency_search_word_id", using: :btree
