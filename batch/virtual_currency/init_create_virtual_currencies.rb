@@ -149,7 +149,8 @@ virtual_currencies = [
   "TRAC",
   "MEE",
   "ELEC",
-  "USDT"
+  "USDT",
+  "SAND"
 ]
 
 virtual_currencies.each do |vc|
