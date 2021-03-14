@@ -15,7 +15,7 @@ class TwitterClient
     @client.update(text) unless ENV["DOCKER_ENV"]
   end
 
-  def search(text)
-    @client.search(text, count: 5, result_type: "recent",  exclude: "retweets")
+  def search(text, count: 5)
+    @client.search(text, count: count, result_type: "recent",  exclude: "retweets")
   end
 end
