@@ -17,10 +17,10 @@ VirtualCurrency.find_each do |v|
     )
 
     search_result.attrs[:statuses].each do |tweet|
-      VirtualCurrencyTweet.create!(
+      VirtualCurrencyTweet.find_or_create_by!(
         twitter_user_id: tweet[:user][:id],
         text: tweet[:text],
-        tweeted_at: tweet[:created_at]
+        tweeted_at: tweet[:created_at].to_time
       )
     end
   end
