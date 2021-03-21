@@ -461,6 +461,7 @@ add_index "virtual_currency_tweet_words", ["virtual_currency_id"], name: "index_
 
 create_table "twitter_users", force: true do |t|
   t.string "origin_user_id"
+  t.string "name"
   t.integer "followers_count"
   t.datetime "created_at"
   t.datetime "updated_at"
