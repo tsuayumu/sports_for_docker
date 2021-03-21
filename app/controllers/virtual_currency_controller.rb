@@ -41,6 +41,6 @@ class VirtualCurrencyController < ApplicationController
   end
 
   def res_tweet_info_rate(tw)
-    ( tw.virtual_currency_tweets.one_day(Time.now).size.to_f / 30 * 100 - 100 ).round(1)
+    ( tw.virtual_currency_tweets.one_day(Time.now).size.to_f / tw.virtual_currency_tweets.one_day(1.days.ago).size.to_f * 100 - 100 ).round(1)
   end
 end
