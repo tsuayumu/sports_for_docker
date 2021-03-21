@@ -29,6 +29,8 @@ VirtualCurrency.find_each do |v|
           virtual_currency_tweet_word: tweet_word,
           twitter_user_id: twitter_user,
           text: tweet[:text],
+          favorite_count: tweet[:favorite_count],
+          retweet_count: tweet[:retweet_count],
           tweeted_at: tweet[:created_at].to_time
         )
       rescue ActiveRecord::StatementInvalid
