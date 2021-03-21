@@ -27,7 +27,7 @@ VirtualCurrency.find_each do |v|
         )
         VirtualCurrencyTweet.find_or_create_by!(
           virtual_currency_tweet_word: tweet_word,
-          twitter_user_id: twitter_user,
+          twitter_user: twitter_user,
           text: tweet[:text],
           favorite_count: tweet[:favorite_count],
           retweet_count: tweet[:retweet_count],
