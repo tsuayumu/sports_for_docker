@@ -471,6 +471,8 @@ create_table "virtual_currency_tweets", force: true do |t|
   t.integer "twitter_user_id"
   t.integer "virtual_currency_tweet_word_id"
   t.text "text"
+  t.integer "favorite_count"
+  t.integer "retweet_count"
   t.datetime "tweeted_at"
   t.datetime "created_at"
   t.datetime "updated_at"
