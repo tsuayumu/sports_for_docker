@@ -10,6 +10,7 @@ class VirtualCurrencyTweetWordController < ApplicationController
     tweet_word.virtual_currency_tweets.map do |tweet|
       {
         text: tweet.text,
+        tweeted_at: tweet.tweeted_at,
         favorite_count: tweet.favorite_count,
         retweet_count: tweet.retweet_count,
         name: tweet.name,
