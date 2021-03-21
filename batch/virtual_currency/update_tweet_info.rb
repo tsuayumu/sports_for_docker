@@ -17,7 +17,7 @@ VirtualCurrency.find_each do |v|
     )
 
     search_result.attrs[:statuses].each do |tweet|
-      next if tweet[:created_at].to_time > 24.hours.ago
+      next if tweet[:created_at].to_time < 24.hours.ago
 
       begin
         twitter_user = TwitterUser.find_or_create_by(
