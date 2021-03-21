@@ -10,7 +10,8 @@ class VirtualCurrencyTweetWordController < ApplicationController
     tweet_word.virtual_currency_tweets.map do |tweet|
       {
         text: tweet.text,
-        user_id: tweet.twitter_user_id
+        name: tweet.name,
+        followers_count: tweet.followers_count
       }
     end
   end
