@@ -25,7 +25,8 @@ class VirtualCurrencyController < ApplicationController
         id: tw.id,
         word: tw.word,
         per_day: res_per_day(tw),
-        count: tw.virtual_currency_tweets.size
+        count: tw.virtual_currency_tweets.one_day(Time.now).size,
+        rate: res_tweet_info_rate(tw)
       }
     end
   end
@@ -37,5 +38,9 @@ class VirtualCurrencyController < ApplicationController
         user_id: tweet.twitter_user_id
       }
     end
+  end
+
+  def res_tweet_info_rate(tw)
+    ( tw.virtual_currency_tweets.one_day(Time.now).size.to_f / 30 * 100 - 100 ).round(1)
   end
 end
