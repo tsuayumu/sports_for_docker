@@ -22,6 +22,7 @@ VirtualCurrency.find_each do |v|
       begin
         twitter_user = TwitterUser.find_or_create_by(
           origin_user_id: tweet[:user][:id],
+          name: tweet[:user][:name],
           followers_count: tweet[:user][:followers_count]
         )
         VirtualCurrencyTweet.find_or_create_by!(
