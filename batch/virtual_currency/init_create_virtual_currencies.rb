@@ -156,11 +156,11 @@
 
 virtual_currencies = [
   "BTC",
-  "SAND",
+  "IOST",
   "XRP",
   "XEM",
   "TRX",
-  "IOST",
+  "SAND",
   "DOT",
 ]
 
